@@ -1,8 +1,8 @@
-import WeatherSummary from '../enums/weatherSummary';
+import WeatherState from '../enums/weatherState';
 
 export default interface ShortCity {
   id: string;
   name: string;
   temperature: number;
-  weatherState: WeatherSummary;
+  weatherState: WeatherState;
 };

@@ -1,6 +1,6 @@
-import WeatherSummary from '../enums/weatherSummary';
+import WeatherState from '../enums/weatherState';
 
 export default interface ShortWeather {
-    state: WeatherSummary;
-    temperature: number;
-}
+  state: WeatherState;
+  temperature: number;
+};

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import ShortCity from '../../../models/shortCity';
-import WeatherSummary from '../../../enums/weatherSummary';
+import WeatherState from '../../../enums/weatherState';
 import CitiesList from './CitiesList';
 
 
@@ -21,17 +21,17 @@ export default class CitySelection extends Component<CitySelectionProps, CitySel
     super(props);
 
     const cities: ShortCity[] = [
-      { id: '1', name: 'Pnom Pen', temperature: 32, weatherState: WeatherSummary.CLOUDY },
-      { id: '2', name: 'Angularia', temperature: 29, weatherState: WeatherSummary.THUNDERSTORM },
-      { id: '3', name: 'Vueland', temperature: 18, weatherState: WeatherSummary.UNSET },
-      { id: '4', name: 'Nodia', temperature: 16, weatherState: WeatherSummary.SUNNY },
-      { id: '5', name: 'Typo gorod', temperature: 19, weatherState: WeatherSummary.TORNADO },
-      { id: '6', name: 'Vueland', temperature: 18, weatherState: WeatherSummary.UNSET },
-      { id: '7', name: 'Nodia', temperature: 16, weatherState: WeatherSummary.SUNNY },
-      { id: '8', name: 'Typo gorod', temperature: 19, weatherState: WeatherSummary.TORNADO },
-      { id: '9', name: 'Vueland', temperature: 18, weatherState: WeatherSummary.UNSET },
-      { id: '0', name: 'Nodia', temperature: 16, weatherState: WeatherSummary.SUNNY },
-      { id: '10', name: 'Typo gorod', temperature: 19, weatherState: WeatherSummary.TORNADO },
+      { id: '1', name: 'Pnom Pen', temperature: 32, weatherState: WeatherState.CLOUDY },
+      { id: '2', name: 'Angularia', temperature: 29, weatherState: WeatherState.THUNDERSTORM },
+      { id: '3', name: 'Vueland', temperature: 18, weatherState: WeatherState.UNSET },
+      { id: '4', name: 'Nodia', temperature: 16, weatherState: WeatherState.SUNNY },
+      { id: '5', name: 'Typo gorod', temperature: 19, weatherState: WeatherState.TORNADO },
+      { id: '6', name: 'Vueland', temperature: 18, weatherState: WeatherState.UNSET },
+      { id: '7', name: 'Nodia', temperature: 16, weatherState: WeatherState.SUNNY },
+      { id: '8', name: 'Typo gorod', temperature: 19, weatherState: WeatherState.TORNADO },
+      { id: '9', name: 'Vueland', temperature: 18, weatherState: WeatherState.UNSET },
+      { id: '0', name: 'Nodia', temperature: 16, weatherState: WeatherState.SUNNY },
+      { id: '10', name: 'Typo gorod', temperature: 19, weatherState: WeatherState.TORNADO },
     ];
 
     this.state = {
@@ -54,9 +54,7 @@ export default class CitySelection extends Component<CitySelectionProps, CitySel
       <View style={styles.container}>
         <SearchBar onChange={this.onSearchChange} nativeInputProps={{placeholder: 'Find your city'}}/>
         <ScrollView>
-          <View style={styles.citiesList}>
-            <CitiesList cities={this.state.filteredCities} />
-          </View>
+          <CitiesList cities={this.state.filteredCities} />
         </ScrollView>
       </View>
     );

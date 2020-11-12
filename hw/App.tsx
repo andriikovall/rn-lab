@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import CitySelection from './src/components/pages/citySelection';
+import WeatherDetails from './src/components/pages/weatherDetails';
 
 const App = () => {
   return (
@@ -14,10 +15,8 @@ const App = () => {
       <StatusBar barStyle="default" />
       <SafeAreaView>
         <View style={styles.wrapper}>
-          <CitySelection />
-          {/* <Title>{'Kharkiv'.toUpperCase()}</Title>
-          <Subtitle>MONDAY, NOVEMBER 3</Subtitle>
-          <AppText>Some small text here</AppText> */}
+          {/* <CitySelection /> */}
+          <WeatherDetails />
         </View>
       </SafeAreaView>
     </>
