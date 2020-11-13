@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import ShortCity from '../../../models/shortCity';
 import { AppText } from '../../shared/Text';
 import City from './City';
@@ -9,10 +9,11 @@ interface CitiesListProps {
 }
 
 export default function CitiesList({ cities }: CitiesListProps) {
+  const renderItem = ({ item }: { item: ShortCity }) => <City city={item} />;
   return (
-    <View>
+    <View style={styles.list}>
       {cities.length
-        ? cities.map(c => (<City key={c.id} city={c}/>))
+        ? <FlatList data={cities} keyExtractor={(c: ShortCity) => c.id} renderItem={renderItem} />
         : <NotFoundText />}
     </View>
   );
@@ -31,5 +32,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 50,
+  },
+  list: {
+    marginBottom: 60,
   },
 });

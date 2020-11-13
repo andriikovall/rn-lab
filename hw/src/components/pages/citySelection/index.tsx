@@ -53,9 +53,7 @@ export default class CitySelection extends Component<CitySelectionProps, CitySel
     return (
       <View style={styles.container}>
         <SearchBar onChange={this.onSearchChange} nativeInputProps={{placeholder: 'Find your city'}}/>
-        <ScrollView>
-          <CitiesList cities={this.state.filteredCities} />
-        </ScrollView>
+        <CitiesList cities={this.state.filteredCities} />
       </View>
     );
   }

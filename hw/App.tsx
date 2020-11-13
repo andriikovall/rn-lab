@@ -16,9 +16,9 @@ const App = () => {
       <StatusBar barStyle="default" />
       <SafeAreaView>
         <View style={styles.wrapper}>
-          {/* <CitySelection /> */}
+          <CitySelection />
           {/* <WeatherDetails /> */}
-          <DaySelection />
+          {/* <DaySelection /> */}
         </View>
       </SafeAreaView>
     </>
