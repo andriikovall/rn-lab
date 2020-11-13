@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import ShortWeather from '../../../models/shortWeather';
 import TimeWeather from './TimeWeather';
 
@@ -9,19 +9,9 @@ interface TimeWeatherScrollListProps {
 
 export default function TimeWeatherScrollList({ items }: TimeWeatherScrollListProps) {
   return (
-    <View style={styles.container} >
-      <ScrollView horizontal={true} indicatorStyle={'white'} >
-        {/* can give index as a key because we do not modify this list */}
-        {items?.map((item, index) =>
-          <TimeWeather key={index} weather={item.weather} time={item.time} />)}
-      </ScrollView>
-    </View>
+    <ScrollView horizontal={true} indicatorStyle={'white'} >
+      {items?.map((item, index) =>
+        <TimeWeather key={index} weather={item.weather} time={item.time} />)}
+    </ScrollView>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-
-  },
-});

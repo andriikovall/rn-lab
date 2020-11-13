@@ -112,11 +112,6 @@ const styles = StyleSheet.create({
   temperatureText: {
     flex: 10,
   },
-  temperatureTextFromContainer: {
-    flexDirection: 'row',
-    flex: 1,
-    padding: 0,
-  },
   barWithTextWrapper: {
     flexDirection: 'row',
     flex: 1,

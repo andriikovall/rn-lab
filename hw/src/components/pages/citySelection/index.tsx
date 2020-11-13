@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ShortCity from '../../../models/shortCity';
 import WeatherState from '../../../enums/weatherState';
 import CitiesList from './CitiesList';
@@ -64,9 +64,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 5,
     marginBottom: 40,
-  },
-  citiesList: {
-
   },
 });
 

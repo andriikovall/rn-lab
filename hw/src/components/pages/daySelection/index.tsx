@@ -119,16 +119,14 @@ export default class DaySelection extends Component<DaySelectionProps, DaySelect
 
   render() {
     return (
-      <>
-        <ScrollView>
-          {this.state.days.map((d, index) =>
-            <DayItem
-              key={index}
-              minTemperature={this.state.minTemperature}
-              maxTemperature={this.state.maxTemperature}
-              item={d} />)}
-        </ScrollView>
-      </>
+      <ScrollView>
+        {this.state.days.map((d, index) =>
+          <DayItem
+            key={index}
+            minTemperature={this.state.minTemperature}
+            maxTemperature={this.state.maxTemperature}
+            item={d} />)}
+      </ScrollView>
     );
   }
 }
