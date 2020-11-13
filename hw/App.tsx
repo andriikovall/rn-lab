@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import CitySelection from './src/components/pages/citySelection';
+import DaySelection from './src/components/pages/daySelection';
 import WeatherDetails from './src/components/pages/weatherDetails';
 
 const App = () => {
@@ -16,7 +17,8 @@ const App = () => {
       <SafeAreaView>
         <View style={styles.wrapper}>
           {/* <CitySelection /> */}
-          <WeatherDetails />
+          {/* <WeatherDetails /> */}
+          <DaySelection />
         </View>
       </SafeAreaView>
     </>
