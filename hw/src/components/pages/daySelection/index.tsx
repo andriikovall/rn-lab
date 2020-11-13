@@ -40,7 +40,7 @@ export default class DaySelection extends Component<DaySelectionProps, DaySelect
       {
         city,
         date: new Date(now).setDate(now.getDate() + 2),
-        temperatureFrom: -1, temperatureTo: 6,
+        temperatureFrom: -5, temperatureTo: 10,
         weatherState: WeatherState.RAINY,
       },
       {

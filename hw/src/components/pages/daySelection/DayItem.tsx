@@ -28,14 +28,16 @@ export default function DayItem({ item, minTemperature, maxTemperature }: DayIte
     const newWidth = ((item.temperatureTo - item.temperatureFrom) / maxLength) * layout.width;
     const newLeftWidth = ((item.temperatureFrom - minTemperature) / maxLength) * layout.width;
     const newRightWidth = layout.width - newWidth - newLeftWidth;
+
+    const temperatureTextApproximateWidth = 50;
     if (!floatsEqual(newWidth, barWidth)) {
-      setBarWidth(newWidth);
+      setBarWidth(newWidth + temperatureTextApproximateWidth);
     }
     if (!floatsEqual(newLeftWidth, leftWidth)) {
-      setLeftWidth(newLeftWidth);
+      setLeftWidth(newLeftWidth - temperatureTextApproximateWidth / 2);
     }
     if (!floatsEqual(newRightWidth, rightWidth)) {
-      setRightWidth(newRightWidth);
+      setRightWidth(newRightWidth - temperatureTextApproximateWidth / 2);
     }
   };
 
