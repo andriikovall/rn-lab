@@ -5,6 +5,10 @@ import { DayWeather } from '../../../models/dayWeather';
 import Reload from './Reload';
 import CityHeader from './CityHeader';
 import TimeWeatherScrollList from './TimeWeatherScrollList';
+import Humidity from './Humidity';
+import Wind from './Wind';
+import Sunrise from './Sunrise';
+import Sunset from './Sunset';
 
 interface WeatherDetailsProps {
 }
@@ -30,7 +34,7 @@ export default class WeatherDetails extends Component<WeatherDetailsProps, Weath
         weatherState: WeatherState.MOSTLY_CLOUDY,
       },
       wind: {
-        direction: 13,
+        direction: 165,
         speed: 5,
       },
       date: Date.now(),
@@ -77,6 +81,12 @@ export default class WeatherDetails extends Component<WeatherDetailsProps, Weath
         <Reload />
         <CityHeader weather={weather} />
         <TimeWeatherScrollList items={weather.timeWeather} />
+        <View style={styles.additionalWeatherSpecs}>
+          <Humidity value={weather.humidity} />
+          <Wind {...weather.wind } />
+          <Sunrise value={weather.sunRise} />
+          <Sunset value={weather.sunSet} />
+        </View>
       </View>
     );
   }
@@ -85,5 +95,9 @@ export default class WeatherDetails extends Component<WeatherDetailsProps, Weath
 const styles = StyleSheet.create({
   container: {
     margin: 10,
+  },
+  additionalWeatherSpecs: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });

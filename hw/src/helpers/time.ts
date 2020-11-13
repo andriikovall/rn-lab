@@ -26,3 +26,12 @@ export const getMinutesFromTime = (time: SimpleTime | Date): number => {
   }
   return h * 60 + m;
 };
+
+export const minutesToTimeText = (mins: number): string => {
+  const time = getTimeFromMinutes(mins);
+  if (time === null) {
+    return '00:00';
+  }
+
+  return `${time.h}:${time.m.toString().padEnd(2, '0')}`;
+};

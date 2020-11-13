@@ -1,35 +1,45 @@
 import React from 'react';
-import { StyleSheet, Text, TextProps } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextProps, TextStyle } from 'react-native';
 import colors from '../../helpers/colors';
 
 interface CustomTextProps extends TextProps {
   children: any;
   size?: number;
+  style?: StyleProp<TextStyle>,
 }
 
-export const Title = (props : CustomTextProps) => (
-  <Text style={[styles.baseText, styles.title, props.size ? { fontSize: props.size } : undefined]}
-    { ...props }>
+export const Title = (props: CustomTextProps) => (
+  <Text style={[
+    styles.baseText,
+    styles.title,
+    props.size ? { fontSize: props.size } : undefined,
+    props?.style]}>
     {props.children}
   </Text>
 );
 
 export const Subtitle = (props: CustomTextProps) => (
-  <Text style={[styles.baseText, styles.subtitle, props.size ? { fontSize: props.size } : undefined]}
-    { ...props }>
+  <Text style={[
+    styles.baseText,
+    styles.subtitle,
+    props.size ? { fontSize: props.size } : undefined,
+    props?.style]}>
     {props.children}
   </Text>
 );
 
 export const AppText = (props: CustomTextProps) => (
-  <Text style={[styles.baseText, styles.text, props.size ? { fontSize: props.size } : undefined]}
-    { ...props }>
+  <Text style={[
+    styles.baseText,
+    styles.text,
+    props.size ? { fontSize: props.size } : undefined,
+    props?.style]}>
     {props.children}
   </Text>
 );
 
 export const AppTextSecondary = (props: CustomTextProps) => (
-  <AppText { ...props } style={styles.textSecondary} />
+  <AppText {...props} style={styles.textSecondary} />
 );
 
 const styles = StyleSheet.create({

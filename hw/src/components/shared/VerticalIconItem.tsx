@@ -11,16 +11,17 @@ interface VerticalIconItemInterface {
 export default function VerticalIconItem({ upperText, icon, lowerText }: VerticalIconItemInterface) {
   return (
     <View style={styles.container}>
-      <View style={styles.upperTextContainer}>
-        <AppText size={15}>
-          {upperText}
-        </AppText>
-      </View>
+      {upperText &&
+        <View style={styles.upperTextContainer}>
+          <AppText size={15}>
+            {upperText}
+          </AppText>
+        </View>}
       <View style={styles.iconContainer}>
         {icon}
       </View>
       <View style={styles.lowerTextContainer}>
-        <AppText size={30}>
+        <AppText size={24}>
           {lowerText}
         </AppText>
       </View>
@@ -31,8 +32,8 @@ export default function VerticalIconItem({ upperText, icon, lowerText }: Vertica
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingHorizontal: 27,
     paddingVertical: 25,
+    width: 90,
   },
   iconContainer: {
     justifyContent: 'center',
