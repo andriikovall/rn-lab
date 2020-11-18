@@ -1,7 +1,7 @@
 import React from 'react';
 import VerticalIconItem from '../../shared/VerticalIconItem';
 import Icon from 'react-native-vector-icons/Feather';
-import colors from '../../../helpers/colors';
+import colors from '../../../constants/colors';
 
 interface HumidityProps {
   value: number;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import WeatherState, { getIconName } from '../../enums/weatherState';
-import colors from '../../helpers/colors';
+import colors from '../../constants/colors';
 
 interface WeatherIconProps {
   state: WeatherState;

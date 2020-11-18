@@ -132,8 +132,8 @@ export default class DaySelection extends Component<DaySelectionProps, DaySelect
 }
 
 const getMinMaxDisplayTemperature = (days: ShortDayWeather[]): { min: number, max: number} => {
-  let min = days[0].temperatureFrom;
-  let max = days[0].temperatureTo;
+  let min = days[0]?.temperatureFrom;
+  let max = days[0]?.temperatureTo;
 
   for (const day of days) {
     if (day.temperatureFrom < min) {

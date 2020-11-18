@@ -3,8 +3,8 @@ import { StyleSheet, TextInput, TextInputProps, TouchableOpacity, View, Interact
 import { useDebounce } from '../../../hooks/useDebounce';
 import { baseTextStyle } from '../../shared/Text';
 import Icon from 'react-native-vector-icons/Ionicons';
-import sharedStyles from '../../../helpers/styles';
-import colors from '../../../helpers/colors';
+import colors from '../../../constants/colors';
+import BorderBottom from '../../shared/BorderBottom';
 
 interface SearchBarProps {
   disabled?: boolean;
@@ -14,13 +14,13 @@ interface SearchBarProps {
   value?: string;
 }
 
-export default function SearchBar (props: SearchBarProps) {
-  const debounce = useDebounce(props.debounce || 200);
+export default function SearchBar({ debounce, onChange, nativeInputProps, value, disabled }: SearchBarProps) {
+  const debounceFunc = useDebounce(debounce || 200);
   const inputRef = useRef<TextInput>(null);
 
   const onInputChange = (val: string) => {
-    debounce(() => {
-      props.onChange(val);
+    debounceFunc(() => {
+      onChange(val);
     });
   };
 
@@ -33,16 +33,18 @@ export default function SearchBar (props: SearchBarProps) {
   return (
     <View style={styles.container}>
       <View style={styles.aside} />
-      <TextInput
-        ref={inputRef}
-        style={styles.input}
-        placeholderTextColor={colors.colorSecondary}
-        {...props.nativeInputProps} value={props.value} onChangeText={onInputChange}
-        editable={!props.disabled}
-      />
+      <BorderBottom style={styles.inputWrapper}>
+        <TextInput
+          ref={inputRef}
+          style={styles.input}
+          placeholderTextColor={colors.colorSecondary}
+          {...nativeInputProps} value={value} onChangeText={onInputChange}
+          editable={!disabled}
+        />
+      </BorderBottom>
       <View style={[styles.aside, styles.iconContainer]}>
         <TouchableOpacity onPress={onSearchPress}>
-          <Icon name="search-outline" size={35} color={baseTextStyle.color}/>
+          <Icon name="search-outline" size={35} color={baseTextStyle.color} />
         </TouchableOpacity>
       </View>
     </View>
@@ -51,12 +53,13 @@ export default function SearchBar (props: SearchBarProps) {
 
 
 const styles = StyleSheet.create({
+  inputWrapper: {
+    flex: 7,
+  },
   input: {
     ...baseTextStyle,
-    ...sharedStyles.bottomDivider,
     fontWeight: 'normal',
     fontSize: 20,
-    flex: 7,
   },
   container: {
     flexDirection: 'row',

@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import colors from '../../../helpers/colors';
+import colors from '../../../constants/colors';
 import { AppText } from '../../shared/Text';
 import Icon from 'react-native-vector-icons/Ionicons';
 

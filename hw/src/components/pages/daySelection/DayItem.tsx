@@ -4,10 +4,10 @@ import ShortDayWeather from '../../../models/shortDayWeather';
 import moment from 'moment';
 import WeatherIcon from '../../shared/WeatherIcon';
 import { AppText } from '../../shared/Text';
-import sharedStyles from '../../../helpers/styles';
-import colors from '../../../helpers/colors';
+import colors from '../../../constants/colors';
 import textToTemperature from '../../../helpers/textToTemperature';
 import floatsEqual from '../../../helpers/floatsEqual';
+import BorderBottom from '../../shared/BorderBottom';
 
 interface DayItemProps {
   item: ShortDayWeather;
@@ -17,6 +17,8 @@ interface DayItemProps {
 
 export default function DayItem({ item, minTemperature, maxTemperature }: DayItemProps) {
   const dayName = getDayName(new Date(item.date));
+  const dayTemperatureFromText = textToTemperature(item.temperatureFrom.toString());
+  const dayTemperatureToText = textToTemperature(item.temperatureTo.toString());
 
   const [barWidth, setBarWidth] = useState<number>(10);
   const [leftWidth, setLeftWidth] = useState<number>(1);
@@ -42,7 +44,7 @@ export default function DayItem({ item, minTemperature, maxTemperature }: DayIte
   };
 
   return (
-    <View style={styles.container}>
+    <BorderBottom style={styles.container}>
       <AppText style={styles.dayName}>{dayName.toUpperCase()}</AppText>
       <View style={styles.weatherStateIconContainer}>
         <WeatherIcon state={item.weatherState} size={20} />
@@ -54,19 +56,19 @@ export default function DayItem({ item, minTemperature, maxTemperature }: DayIte
         <View style={[styles.barWithTextWrapper, safeGetStyleFlex(barWidth)]}>
           <View>
             <AppText style={[styles.temperatureText]}
-            >{textToTemperature(item.temperatureFrom.toString())}</AppText>
+            >{dayTemperatureFromText}</AppText>
           </View>
           <View style={[styles.temperatureBar]} />
           <View>
             <AppText style={styles.temperatureText}
-            >{textToTemperature(item.temperatureTo.toString())}</AppText>
+            >{dayTemperatureToText}</AppText>
           </View>
         </View>
 
         <View style={safeGetStyleFlex(rightWidth)} />
 
       </View>
-    </View>
+    </BorderBottom>
   );
 }
 
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 25,
     marginHorizontal: 15,
-    ...sharedStyles.bottomDivider,
   },
   dayName: {
     flex: 2,

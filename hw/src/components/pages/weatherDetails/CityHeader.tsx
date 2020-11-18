@@ -7,8 +7,8 @@ import { getMinutesFromTime } from '../../../helpers/time';
 import { DayWeather } from '../../../models/dayWeather';
 import { Title, Subtitle, AppText } from '../../shared/Text';
 import SunStateIcon from './SunStateIcon';
-import sharedStyles from '../../../helpers/styles';
 import WeatherIcon from '../../shared/WeatherIcon';
+import BorderBottom from '../../shared/BorderBottom';
 
 interface CityHeaderProps {
   weather: DayWeather;
@@ -17,7 +17,7 @@ interface CityHeaderProps {
 export default function CityHeader({ weather }: CityHeaderProps) {
   const weatherState: string = getReadableStateName(weather.city.weatherState);
   return (
-    <View style={styles.cityHeader}>
+    <BorderBottom style={styles.cityHeader}>
       <Title>{weather.city.name.toUpperCase()}</Title>
       <Subtitle>{moment(weather.date).format('dddd, MMMM d').toUpperCase()}</Subtitle>
       <View style={styles.currentWeather}>
@@ -38,7 +38,7 @@ export default function CityHeader({ weather }: CityHeaderProps) {
           <AppText size={18}>{moment(Date.now()).format('h:mm')}</AppText>
         </View>
       </View>
-    </View>
+    </BorderBottom>
   );
 }
 
@@ -46,7 +46,6 @@ export default function CityHeader({ weather }: CityHeaderProps) {
 const styles = StyleSheet.create({
   cityHeader: {
     marginTop: 5,
-    ...sharedStyles.bottomDivider,
   },
   currentWeather: {
     flexDirection: 'row',

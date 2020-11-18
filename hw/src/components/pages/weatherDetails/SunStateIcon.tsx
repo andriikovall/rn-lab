@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import colors from '../../../helpers/colors';
+import colors from '../../../constants/colors';
 
 interface SunStateIconProps {
   currentTime: number;

@@ -52,7 +52,7 @@ export default class CitySelection extends Component<CitySelectionProps, CitySel
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar onChange={this.onSearchChange} nativeInputProps={{placeholder: 'Find your city'}}/>
+        <SearchBar onChange={this.onSearchChange} nativeInputProps={{ placeholder: 'Find your city' }}/>
         <CitiesList cities={this.state.filteredCities} />
       </View>
     );

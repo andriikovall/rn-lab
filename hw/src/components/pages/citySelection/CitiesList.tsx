@@ -10,10 +10,11 @@ interface CitiesListProps {
 
 export default function CitiesList({ cities }: CitiesListProps) {
   const renderItem = ({ item }: { item: ShortCity }) => <City city={item} />;
+  const keyExtractor = (c: ShortCity) => c.id;
   return (
     <View style={styles.list}>
       {cities.length
-        ? <FlatList data={cities} keyExtractor={(c: ShortCity) => c.id} renderItem={renderItem} />
+        ? <FlatList data={cities} keyExtractor={keyExtractor} renderItem={renderItem} />
         : <NotFoundText />}
     </View>
   );
