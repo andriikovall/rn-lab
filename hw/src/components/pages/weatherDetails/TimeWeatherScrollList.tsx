@@ -1,7 +1,5 @@
-import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import ShortWeather from '../../../models/shortWeather';
 import TimeWeather from './TimeWeather';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import colors from '../../constants/colors';
 
 
@@ -8,9 +8,12 @@ export default function wrapPage(Page: any) {
   return class Wrapped extends Component {
     render() {
       return (
-        <View style={styles.wrapper}>
-          <Page />
-        </View>
+        <>
+          <StatusBar backgroundColor={colors.colorBg} />
+          <View style={styles.wrapper}>
+            <Page />
+          </View>
+        </>
       );
     }
   };

@@ -6,5 +6,5 @@ export default {
   colorOrange: '#ff6600',
   colorDanger: '#ff1a1a',
 
-  colorLoaderBg: 'rgba(97, 132, 184, 0.5)',
+  colorLoaderBg: 'rgba(97, 132, 184, 0.3)',
 };

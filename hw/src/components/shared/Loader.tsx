@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { ActivityIndicator, Animated, StyleSheet } from 'react-native';
+import { Animated, StyleSheet } from 'react-native';
 import colors from '../../constants/colors';
 import loadingContext from '../../contexts/loading';
 import WeatherState from '../../enums/weatherState';

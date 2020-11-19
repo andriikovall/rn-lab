@@ -3,13 +3,12 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  StatusBar,
 } from 'react-native';
 
 import colors from './src/constants/colors';
 
 import { NavigationContainer } from '@react-navigation/native';
-import Routes from './src/routes';
+import Routes from './src/components/routes';
 import Loader from './src/components/shared/Loader';
 import LoadingContext from './src/contexts/loading';
 import usePromise from './src/hooks/usePromise';
@@ -19,7 +18,7 @@ const App = () => {
   const [isAppLoading, setIsAppLoading] = useState<boolean>(false);
   const user = usePromise(AuthService.getUser());
   useEffect(() => {
-    setIsAppLoading(!user);
+    setIsAppLoading(user === undefined);
   }, [user]);
   return (
     <LoadingContext.Provider value={{
