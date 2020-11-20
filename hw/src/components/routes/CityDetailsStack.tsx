@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import wrapPage from '../hocs/wrapPage';
 import WeatherDetails from '../pages/weatherDetails';
@@ -32,7 +32,9 @@ export default function CityDetailsStackScreen() {
   };
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+    }}>
       <Stack.Screen name="WeatherDetails" component={wrapPage(WeatherDetails)}
         options={createStackScreenOptions({
           navigation,

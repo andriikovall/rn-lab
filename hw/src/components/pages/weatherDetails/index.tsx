@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import WeatherState from '../../../enums/weatherState';
 import { DayWeather } from '../../../models/dayWeather';
 import Reload from './Reload';
@@ -77,7 +77,7 @@ export default class WeatherDetails extends Component<WeatherDetailsProps, Weath
   render() {
     const { weather } = this.state;
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Reload />
         <CityHeader weather={weather} />
         <TimeWeatherScrollList items={weather.timeWeather} />
@@ -87,7 +87,7 @@ export default class WeatherDetails extends Component<WeatherDetailsProps, Weath
           <Sunrise value={weather.sunRise} />
           <Sunset value={weather.sunSet} />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

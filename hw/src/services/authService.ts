@@ -23,6 +23,7 @@ class AuthService {
   }
 
   public async getUser(): Promise<User | null> {
+    // just for loading UI. Otherwise the animation is too fast and bulky
     await delayedPromise(null, null, 500);
     if (this.cachedUser) {
       return this.cachedUser;

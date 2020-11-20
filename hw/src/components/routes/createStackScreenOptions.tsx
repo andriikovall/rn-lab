@@ -33,6 +33,7 @@ const headerBackground = () => <HeaderBackground />;
 const DefaultLeftIcon = () =>
   <Icon name="chevron-back-outline" color={colors.colorPrimary} size={sizes.headerIconSize} />;
 
+
 const createStackScreenOptions =
   ({
     title,
@@ -40,7 +41,7 @@ const createStackScreenOptions =
     rightIcon,
     navigation,
     onRightPress,
-    onLeftPress
+    onLeftPress,
   }: CreateStackScreenOptions): StackNavigationOptions => {
     if (!onRightPress) {
       onRightPress = () => { };

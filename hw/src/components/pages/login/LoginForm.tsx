@@ -10,7 +10,7 @@ import loadingContext from '../../../contexts/loading';
 import AuthService from '../../../services/authService';
 import User from '../../../models/user';
 import delayedPromise from '../../../helpers/delayedPromise';
-import { useNavigation } from '@react-navigation/core';
+import authContext from '../../../contexts/auth';
 
 interface LoginFormProps {
 }
@@ -18,9 +18,9 @@ interface LoginFormProps {
 export default function LoginForm(_props: LoginFormProps) {
 
   const { control, handleSubmit, errors } = useForm<LoginCredentials>();
-  const navigation = useNavigation();
 
   const { setIsLoading } = useContext(loadingContext);
+  const { setUser } = useContext(authContext);
 
   const onSubmit = (value: LoginCredentials) => {
     setIsLoading(true);
@@ -28,8 +28,7 @@ export default function LoginForm(_props: LoginFormProps) {
       .then(() => AuthService.authenticate(value))
       .then((user: User | null) => {
         if (user) {
-          // Alert.alert('Success', 'You where logged in');
-          navigation.navigate('WeatherDetails');
+          setUser(user);
         } else {
           Alert.alert('Error', 'Invalid credentials');
         }

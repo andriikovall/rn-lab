@@ -1021,6 +1021,11 @@
 "@types/normalize-package-data@^2.4.0":
   "version" "2.4.0"
 
+"@types/pluralize@^0.0.29":
+  "integrity" "sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA=="
+  "resolved" "https://registry.npmjs.org/@types/pluralize/-/pluralize-0.0.29.tgz"
+  "version" "0.0.29"
+
 "@types/prettier@^1.19.0":
   "version" "1.19.1"
 
@@ -4300,6 +4305,11 @@
     "arr-diff" "^1.0.1"
     "arr-union" "^2.0.1"
     "extend-shallow" "^1.1.2"
+
+"pluralize@^8.0.0":
+  "integrity" "sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA=="
+  "resolved" "https://registry.npmjs.org/pluralize/-/pluralize-8.0.0.tgz"
+  "version" "8.0.0"
 
 "pn@^1.1.0":
   "version" "1.1.0"

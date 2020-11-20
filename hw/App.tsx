@@ -13,10 +13,12 @@ import Loader from './src/components/shared/Loader';
 import LoadingContext from './src/contexts/loading';
 import usePromise from './src/hooks/usePromise';
 import AuthService from './src/services/authService';
+import AuthContext from './src/contexts/auth';
+import User from './src/models/user';
 
 const App = () => {
   const [isAppLoading, setIsAppLoading] = useState<boolean>(false);
-  const user = usePromise(AuthService.getUser());
+  const [user, setUser] = usePromise<User | null>(AuthService.getUser());
   useEffect(() => {
     setIsAppLoading(user === undefined);
   }, [user]);
@@ -25,14 +27,19 @@ const App = () => {
       setIsLoading: (val) => setIsAppLoading(val),
       isLoading: isAppLoading,
     }}>
-      <NavigationContainer>
-        <SafeAreaView>
-          <View style={styles.wrapper}>
-            <Loader />
-            <Routes isLoggedIn={!!user} />
-          </View>
-        </SafeAreaView>
-      </NavigationContainer>
+      <AuthContext.Provider value={{
+        setUser: setUser,
+        getUser: () => user,
+      }}>
+        <NavigationContainer>
+          <SafeAreaView>
+            <View style={styles.wrapper}>
+              <Loader />
+              <Routes isLoggedIn={!!user} />
+            </View>
+          </SafeAreaView>
+        </NavigationContainer>
+      </AuthContext.Provider>
     </LoadingContext.Provider>
   );
 };

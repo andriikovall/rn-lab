@@ -4,16 +4,17 @@ import { LayoutChangeEvent, StyleProp, StyleSheet, View, ViewStyle } from 'react
 import colors from '../../constants/colors';
 import trimNumber from '../../helpers/trimNumber';
 
-const buttonRadius = 30;
-
-interface RangeProps {
+export interface RangeProps {
   min: number;
   max: number;
   step: number;
-  onChange: (val: number) => void;
-  initialValue: number;
+  onChange?: (val: number) => void;
+  initialValue?: number;
+  buttonRadius?: number;
+  buttonColor?: string;
   leftColor?: string;
   rightColor?: string;
+  lineWidth?: number;
   style?: StyleProp<ViewStyle>
 }
 
@@ -21,10 +22,13 @@ export default function Range({
   min,
   max,
   step,
-  onChange,
-  initialValue,
+  lineWidth = 4,
+  onChange = () => {},
+  initialValue = min,
   rightColor = colors.colorPrimaryShade,
   leftColor = colors.colorOrange,
+  buttonRadius = 30,
+  buttonColor = colors.colorPrimary,
   style,
 }: RangeProps) {
 
@@ -56,52 +60,62 @@ export default function Range({
       const currentRightLength = _rangeLength - currentLeftLength;
       setLeftLength(currentLeftLength);
       setRightLength(currentRightLength);
+      const stepNumber = trimmedX / _stepInPixels;
+      const currentVal = min + stepNumber * step;
+      onChange(currentVal);
     }
   };
 
   const onMove = (ev: GestureResponderEvent) => {
     const absolutePosX = ev.nativeEvent.touches[0].pageX;
     const relativePosX = absolutePosX - rangeOffset;
-    const x = trimNumber(relativePosX + buttonRadius / 2, 0, rangeLength);
+    const x = trimNumber(relativePosX, 0, rangeLength);
     onChangeVal(x);
   };
 
   return (
-    <View style={[styles.container, style]} onLayout={onRangeLayoutRendered}
+    <View style={[styles.container, getContainerStyle(buttonRadius), style]} onLayout={onRangeLayoutRendered}
       onMoveShouldSetResponder={() => true} onResponderMove={onMove} >
-      <View style={[getLineStyle(leftColor, leftLength)]} />
-      <View style={[styles.button, getButtonPositionStyles(buttonPosX)]} />
-      <View style={[getLineStyle(rightColor, rightLength)]}/>
+      <View style={getLineStyle(leftColor, leftLength, lineWidth)} />
+      <View style={[
+        styles.button,
+        getButtonStyles(buttonRadius, buttonColor),
+        getButtonPositionStyles(buttonPosX, buttonRadius),
+      ]} />
+      <View style={getLineStyle(rightColor, rightLength, lineWidth)} />
     </View>
   );
 
 };
 
-const getLineStyle = (color: string, flex: number): StyleProp<ViewStyle> => ({
-  backgroundColor: color, flex, height: 2,
+const getContainerStyle = (radius: number): StyleProp<ViewStyle> => ({
+  height: radius + 5,
+  marginHorizontal: radius / 2 + 10,
 });
 
-const getButtonPositionStyles = (x: number): StyleProp<ViewStyle> => ({
-  transform: [ { translateX: x - buttonRadius / 2 } ],
+const getButtonStyles = (radius: number, color: string): StyleProp<ViewStyle> => ({
+  width: radius,
+  height: radius,
+  borderRadius: radius,
+  backgroundColor: color,
 });
+
+const getLineStyle = (color: string, flex: number, lineWidth: number): StyleProp<ViewStyle> => ({
+  backgroundColor: color, flex, height: lineWidth,
+});
+
+const getButtonPositionStyles = (x: number, radius: number): StyleProp<ViewStyle> => ({
+  transform: [{ translateX: x - radius / 2 }],
+});
+
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 30,
     flexDirection: 'row',
-    height: buttonRadius + 5,
     alignItems: 'center',
   },
   button: {
-    width: buttonRadius,
-    height: buttonRadius,
-    borderRadius: buttonRadius,
-    backgroundColor: colors.colorPrimary,
     position: 'absolute',
     zIndex: 1,
-  },
-  line: {
-    height: 2,
-    flex: 1,
   },
 });
