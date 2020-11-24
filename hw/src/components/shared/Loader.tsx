@@ -42,7 +42,6 @@ export default function Loader() {
       { zIndex: containerOpacityAndZIndex },
     ]}>
       <Animated.View style={{ transform: [{ scale: loaderScale }] }}>
-        {/* <ActivityIndicator size="large" color={colors.colorPrimary} /> */}
         <WeatherIcon state={WeatherState.SUNNY} size={30} />
       </Animated.View>
     </Animated.View>
@@ -55,6 +54,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.colorLoaderBg,
     alignItems: 'center',
     justifyContent: 'center',
-    // zIndex: 0,
   },
 });

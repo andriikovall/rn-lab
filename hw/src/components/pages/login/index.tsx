@@ -11,10 +11,6 @@ interface LoginState {
 export default class Login extends Component<LoginProps, LoginState> {
   constructor(props: LoginProps) {
     super(props);
-
-    this.state = {
-
-    };
   }
 
   render() {

@@ -3,7 +3,6 @@ import { StyleSheet, TextInput } from 'react-native';
 import colors from '../../../constants/colors';
 import BorderBottom from '../../shared/BorderBottom';
 import { baseTextStyle } from '../../shared/Text';
-// import
 
 export default function UserDataForm() {
   return (
@@ -29,7 +28,6 @@ export default function UserDataForm() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
-    // paddingVertical: 40,
     paddingTop: 20,
     paddingBottom: 55,
   },

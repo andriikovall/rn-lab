@@ -40,17 +40,10 @@ const createStackScreenOptions =
     leftIcon,
     rightIcon,
     navigation,
-    onRightPress,
-    onLeftPress,
+    onRightPress = () => { },
+    onLeftPress = () => { navigation.goBack(); },
   }: CreateStackScreenOptions): StackNavigationOptions => {
-    if (!onRightPress) {
-      onRightPress = () => { };
-    }
-    if (!onLeftPress) {
-      onLeftPress = () => {
-        navigation.goBack();
-      };
-    }
+
     const headerLeft = () =>
       (
         <TouchableOpacity onPress={onLeftPress}>
@@ -65,11 +58,13 @@ const createStackScreenOptions =
         </TouchableOpacity>
       );
 
+    const headerTitle = () => (title ? <AppText>{title}</AppText> : null);
+
     return {
-      headerBackground: headerBackground,
-      headerLeft: headerLeft,
-      headerRight: headerRight,
-      headerTitle: () => (title ? <AppText>{title}</AppText> : null),
+      headerBackground,
+      headerLeft,
+      headerRight,
+      headerTitle,
     };
   };
 

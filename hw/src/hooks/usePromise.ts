@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
 /**
@@ -10,7 +11,6 @@ const usePromise = <T>(promise: Promise<T>): [T | undefined, React.Dispatch<Reac
     promise.then(v => {
       setResolvedValue(v);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [resolvedValue, setResolvedValue];
