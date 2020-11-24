@@ -19,6 +19,5 @@ const styles = StyleSheet.create({
   bottomDivider: {
     borderBottomColor: colors.colorSecondary,
     borderBottomWidth: 2,
-    // flex: 1,
   },
 });

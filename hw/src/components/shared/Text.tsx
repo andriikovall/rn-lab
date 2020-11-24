@@ -42,6 +42,10 @@ export const AppTextSecondary = (props: CustomTextProps) => (
   <AppText {...props} style={styles.textSecondary} />
 );
 
+export const Warning = (props: CustomTextProps) => (
+  <AppText { ...props } style={styles.textWarning} />
+);
+
 const styles = StyleSheet.create({
   baseText: {
     fontFamily: 'PTS55F',
@@ -60,6 +64,9 @@ const styles = StyleSheet.create({
   },
   textSecondary: {
     color: colors.colorSecondary,
+  },
+  textWarning: {
+    color: colors.colorOrange,
   },
 });
 
