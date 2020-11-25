@@ -5,7 +5,7 @@ import moment from 'moment';
 import WeatherIcon from '../../shared/WeatherIcon';
 import { AppText } from '../../shared/Text';
 import colors from '../../../constants/colors';
-import textToTemperature from '../../../helpers/textToTemperature';
+import useNumberToTemperatureTextConverter from '../../../hooks/useNumberToTemperatureTextConverter';
 import floatsEqual from '../../../helpers/floatsEqual';
 import BorderBottom from '../../shared/BorderBottom';
 
@@ -17,8 +17,8 @@ interface DayItemProps {
 
 export default function DayItem({ item, minTemperature, maxTemperature }: DayItemProps) {
   const dayName = getDayName(new Date(item.date));
-  const dayTemperatureFromText = textToTemperature(item.temperatureFrom.toString());
-  const dayTemperatureToText = textToTemperature(item.temperatureTo.toString());
+  const dayTemperatureFromText = useNumberToTemperatureTextConverter(item.temperatureFrom);
+  const dayTemperatureToText = useNumberToTemperatureTextConverter(item.temperatureTo);
 
   const [barWidth, setBarWidth] = useState<number>(10);
   const [leftWidth, setLeftWidth] = useState<number>(1);

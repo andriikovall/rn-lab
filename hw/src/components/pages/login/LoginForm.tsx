@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Alert, StyleSheet, TextInput, TextInputProps, View } from 'react-native';
+import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import LoginCredentials from '../../../models/loginCredentials';
 import formConstraints from '../../../constants/formConstraints';
@@ -11,6 +11,7 @@ import AuthService from '../../../services/authService';
 import User from '../../../models/user';
 import delayedPromise from '../../../helpers/delayedPromise';
 import authContext from '../../../contexts/auth';
+import useErrorHandler from '../../../hooks/useErrorHandler';
 
 interface LoginFormProps {
 }
@@ -22,6 +23,8 @@ export default function LoginForm(_props: LoginFormProps) {
   const { setIsLoading } = useContext(loadingContext);
   const { setUser } = useContext(authContext);
 
+  const errorHandler = useErrorHandler();
+
   const onSubmit = (value: LoginCredentials) => {
     setIsLoading(true);
     delayedPromise(null, null, 3000)
@@ -30,11 +33,11 @@ export default function LoginForm(_props: LoginFormProps) {
         if (user) {
           setUser(user);
         } else {
-          Alert.alert('Error', 'Invalid credentials');
+          errorHandler(null, { errorTitle: 'Error', errorMessage: 'Invalid credentials' });
         }
       })
       .catch((err) => {
-        Alert.alert('Some error occurred', err.message);
+        errorHandler(err);
       })
       .then(() => {
         setIsLoading(false);
