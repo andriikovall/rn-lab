@@ -2,7 +2,7 @@ import ShortCity from './shortCity';
 import ShortWeather from './shortWeather';
 
 export interface DayWeather extends ShortCity {
-  city: ShortCity;
+  cityName: string;
   date: number;
   // can be received in kelvins from server
   temperature: number;

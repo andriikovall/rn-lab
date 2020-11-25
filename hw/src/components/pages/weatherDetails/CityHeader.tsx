@@ -2,8 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { getReadableStateName } from '../../../enums/weatherState';
-import textToTemperature from '../../../helpers/textToTemperature';
-import { getMinutesFromTime } from '../../../helpers/time';
+import useNumberToTemperatureTextConverter from '../../../hooks/useNumberToTemperatureTextConverter';
 import { DayWeather } from '../../../models/dayWeather';
 import { Title, Subtitle, AppText } from '../../shared/Text';
 import SunStateIcon from './SunStateIcon';
@@ -15,27 +14,33 @@ interface CityHeaderProps {
 }
 
 export default function CityHeader({ weather }: CityHeaderProps) {
-  const weatherState: string = getReadableStateName(weather.city.weatherState);
+  const weatherStateName: string = getReadableStateName(weather.weatherState);
+  const displayWeatherStateName = weatherStateName && ('// ' + weatherStateName);
+  const cityName = weather.cityName.toUpperCase();
+  const date = moment(weather.date).format('dddd, MMMM d').toUpperCase();
+  const weatherState = weather.weatherState;
+  const temperature = useNumberToTemperatureTextConverter(weather.temperature);
+  const currentTime: string = moment(Date.now()).format('HH:mm');
   return (
     <BorderBottom style={styles.cityHeader}>
-      <Title>{weather.city.name.toUpperCase()}</Title>
-      <Subtitle>{moment(weather.date).format('dddd, MMMM d').toUpperCase()}</Subtitle>
+      <Title>{cityName}</Title>
+      <Subtitle>{date}</Subtitle>
       <View style={styles.currentWeather}>
         <View style={styles.shortWeather}>
-          <WeatherIcon state={weather.city.weatherState} style={styles.weatherIcon} size={90} />
+          <WeatherIcon state={weatherState} style={styles.weatherIcon} size={90} />
           <View style={styles.weatherTemperature}>
-            <AppText size={70}>{textToTemperature(weather.temperature.toString())}</AppText>
-            <AppText size={14}>{weatherState && ('// ' + weatherState)}</AppText>
+            <AppText size={70}>{temperature}</AppText>
+            <AppText size={14}>{displayWeatherStateName}</AppText>
           </View>
         </View>
         <View style={styles.sunState}>
           <SunStateIcon
             style={styles.sunStateIcon}
             size={30}
-            currentTime={getMinutesFromTime(new Date())}
+            currentTime={Date.now()}
             sunRise={weather.sunRise}
             sunSet={weather.sunSet} />
-          <AppText size={18}>{moment(Date.now()).format('h:mm')}</AppText>
+          <AppText size={18}>{currentTime}</AppText>
         </View>
       </View>
     </BorderBottom>

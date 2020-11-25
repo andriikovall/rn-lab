@@ -5,11 +5,15 @@ import colors from '../../../constants/colors';
 import { AppText } from '../../shared/Text';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+interface ReloadProps {
+  lastReloadTime: number | string | Date;
+}
 
-export default function Reload() {
+export default function Reload({ lastReloadTime }: ReloadProps) {
+  const displayTime = moment(lastReloadTime).format('HH:mm');
   return (
     <View style={styles.reload}>
-      <AppText size={18}>{moment(Date.now()).format('HH:mm')}</AppText>
+      <AppText size={18}>{displayTime}</AppText>
       <Icon style={styles.reloadIcon} name="reload-outline" color={colors.colorPrimary} size={16} />
     </View>
   );

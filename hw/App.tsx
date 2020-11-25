@@ -16,6 +16,8 @@ import AuthService from './src/services/authService';
 import AuthContext from './src/contexts/auth';
 import User from './src/models/user';
 
+import SettingsProvider from './src/components/contextProvides/SettingsProvider';
+
 const App = () => {
   const [isAppLoading, setIsAppLoading] = useState<boolean>(false);
   const [user, setUser] = usePromise<User | null>(AuthService.getUser());
@@ -31,14 +33,16 @@ const App = () => {
         setUser: setUser,
         getUser: () => user,
       }}>
-        <NavigationContainer>
-          <SafeAreaView>
-            <View style={styles.wrapper}>
-              <Loader />
-              <Routes isLoggedIn={!!user} />
-            </View>
-          </SafeAreaView>
-        </NavigationContainer>
+        <SettingsProvider>
+          <NavigationContainer>
+            <SafeAreaView>
+              <View style={styles.wrapper}>
+                <Loader />
+                <Routes isLoggedIn={!!user} />
+              </View>
+            </SafeAreaView>
+          </NavigationContainer>
+        </SettingsProvider>
       </AuthContext.Provider>
     </LoadingContext.Provider>
   );
