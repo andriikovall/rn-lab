@@ -1304,6 +1304,13 @@
 "aws4@^1.8.0":
   "version" "1.11.0"
 
+"axios@^0.21.0":
+  "integrity" "sha512-fmkJBknJKoZwem3/IKSSLpkdNXZeBu5Q7GA/aRsr2btgrptmSCxi2oFjZHqGdK9DoTil9PIHlPIZw2EcRJXRvw=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.0.tgz"
+  "version" "0.21.0"
+  dependencies:
+    "follow-redirects" "^1.10.0"
+
 "babel-eslint@10.1.0":
   "version" "10.1.0"
   dependencies:
@@ -2414,6 +2421,11 @@
 
 "flatted@^2.0.0":
   "version" "2.0.2"
+
+"follow-redirects@^1.10.0":
+  "integrity" "sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.0.tgz"
+  "version" "1.13.0"
 
 "for-in@^1.0.2":
   "version" "1.0.2"

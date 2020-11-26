@@ -3,6 +3,7 @@ import { GestureResponderEvent } from 'react-native';
 import { LayoutChangeEvent, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import colors from '../../constants/colors';
 import trimNumber from '../../helpers/trimNumber';
+import { useDebounce } from '../../hooks/useDebounce';
 
 export interface RangeProps {
   min: number;
@@ -23,7 +24,7 @@ export default function Range({
   max,
   step,
   lineWidth = 4,
-  onChange = () => {},
+  onChange = () => { },
   initialValue = min,
   rightColor = colors.colorPrimaryShade,
   leftColor = colors.colorOrange,
@@ -41,6 +42,8 @@ export default function Range({
 
   const [stepInPixels, setStepInPixels] = useState<number>(0);
 
+  const debounce = useDebounce(35);
+
   const onRangeLayoutRendered = (ev: LayoutChangeEvent) => {
     const offset = ev.nativeEvent.layout.x;
     setRangeOffset(offset);
@@ -49,10 +52,10 @@ export default function Range({
     const mappedStep = width / ((max - min) / step);
     setStepInPixels(mappedStep);
     const initialPosX = mappedStep * (initialValue - min) / step;
-    onChangeVal(initialPosX, mappedStep, width);
+    onChangeInternal(initialPosX, mappedStep, width);
   };
 
-  const onChangeVal = (x: number, _stepInPixels: number = stepInPixels, _rangeLength: number = rangeLength) => {
+  const onChangeInternal = (x: number, _stepInPixels: number = stepInPixels, _rangeLength: number = rangeLength) => {
     const trimmedX = trimNumber(Math.round(x / _stepInPixels) * _stepInPixels, 0, _rangeLength);
     if (buttonPosX !== trimmedX) {
       setButtonPosX(trimmedX);
@@ -62,7 +65,9 @@ export default function Range({
       setRightLength(currentRightLength);
       const stepNumber = trimmedX / _stepInPixels;
       const currentVal = min + stepNumber * step;
-      onChange(currentVal);
+      debounce(() => {
+        onChange(currentVal);
+      });
     }
   };
 
@@ -70,7 +75,7 @@ export default function Range({
     const absolutePosX = ev.nativeEvent.touches[0].pageX;
     const relativePosX = absolutePosX - rangeOffset;
     const x = trimNumber(relativePosX, 0, rangeLength);
-    onChangeVal(x);
+    onChangeInternal(x);
   };
 
   return (

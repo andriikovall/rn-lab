@@ -14,7 +14,8 @@ module.exports = {
     'no-use-before-define': 'error',
     'no-extra-semi': 0,
     'prettier/prettier': 0,
-    'indent': ["error", 2],
+    'indent': ['error', 2],
     'no-use-before-define': 0,
+    'indent': ['error', 2, { 'SwitchCase': 1 }]
   }
 };

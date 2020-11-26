@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { getReadableStateName } from '../../../enums/weatherState';
 import ShortCity from '../../../models/shortCity';
 import { AppText, AppTextSecondary } from '../../shared/Text';
-import textToTemperature from '../../../helpers/textToTemperature';
+import useNumberToTemperatureTextConverter from '../../../hooks/useNumberToTemperatureTextConverter';
 import BorderBottom from '../../shared/BorderBottom';
 
 interface CityProps {
@@ -12,7 +12,7 @@ interface CityProps {
 
 export default function City({ city }: CityProps) {
   const weatherState: string = getReadableStateName(city.weatherState);
-  const temperature: string = textToTemperature(city.temperature.toString());
+  const temperature: string = useNumberToTemperatureTextConverter(city.temperature);
   const weatherStateString: string = weatherState && ('// ' + weatherState.toUpperCase());
   return (
     <BorderBottom style={styles.container}>

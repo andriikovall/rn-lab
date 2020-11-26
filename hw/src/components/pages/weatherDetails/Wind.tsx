@@ -11,22 +11,24 @@ interface WindProps {
 }
 
 export default function Wind({ speed, direction }: WindProps) {
+  const speedText = speed?.toPrecision(2);
   const lowerText =
     (<AppText>
-      {speed}
+      {speedText}
       <View style={styles.speedUnits}>
         <AppText size={15}>m/s</AppText>
       </View>
     </AppText>);
 
-  const icon =
-    (<Icon
+  const icon = (
+    <Icon
       name="arrow-up"
       size={32}
       color={colors.colorPrimary}
       style={{
-        transform: [{ rotate: `${direction}deg` }],
-      }} />);
+        transform: [{ rotate: `${direction - 180}deg` }],
+      }} />
+  );
 
   return (
     <VerticalIconItem lowerText={lowerText} icon={icon} />

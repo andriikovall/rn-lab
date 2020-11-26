@@ -5,15 +5,20 @@ import loadingContext from '../../contexts/loading';
 import WeatherState from '../../enums/weatherState';
 import WeatherIcon from './WeatherIcon';
 
-export default function Loader() {
+interface LoaderProps {
+  overrideContextLoadingValue?: boolean;
+}
+
+export default function Loader({ overrideContextLoadingValue }: LoaderProps) {
 
   const { isLoading } = useContext(loadingContext);
+  const shouldBeLoading = overrideContextLoadingValue || isLoading;
 
   const containerOpacityAndZIndex = useRef(new Animated.Value(0)).current;
   const loaderScale = useRef(new Animated.Value(0)).current;
 
   Animated.timing(containerOpacityAndZIndex, {
-    toValue: isLoading ? 1 : 0,
+    toValue: shouldBeLoading ? 1 : 0,
     duration: 300,
     useNativeDriver: true,
   }).start();
@@ -22,12 +27,12 @@ export default function Loader() {
     Animated.sequence(
       [
         Animated.timing(loaderScale, {
-          toValue: isLoading ? 2 : 1,
+          toValue: shouldBeLoading ? 2 : 1,
           duration: 1000,
           useNativeDriver: true,
         }),
         Animated.timing(loaderScale, {
-          toValue: isLoading ? 1 : 2,
+          toValue: shouldBeLoading ? 1 : 2,
           duration: 1000,
           useNativeDriver: true,
         }),

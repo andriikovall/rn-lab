@@ -1,48 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 import RangeInput from './RangeInput';
 import UserDataForm from './UserDataFrom';
 import pluralize from 'pluralize';
 import TemperatureUnitsInput from './TemperatureUnitsInput';
 import TemperatureUnit from '../../../enums/temperatureUnits';
+import useSettings from '../../../hooks/useSettings';
 
-interface SettingsProps {
-}
 
-interface SettingsState {
-}
+export default function Settings() {
 
-export default class Settings extends Component<SettingsProps, SettingsState> {
-  constructor(props: SettingsProps) {
-    super(props);
-    this.pluralizeDays = this.pluralizeDays.bind(this);
-  }
+  const { settings, setSettings } = useSettings();
 
-  pluralizeDays(val: number) {
+  const pluralizeDays = (val: number) => {
     return pluralize('days', val);
-  }
+  };
 
-  render() {
-    return (
-      <ScrollView>
-        <UserDataForm />
-        <RangeInput
-          min={1}
-          max={10}
-          units={this.pluralizeDays}
-          label="Show weather for"
-          step={1} initialValue={5} />
+  const onChangeTemperatureUnits = (unit: TemperatureUnit) => {
+    setSettings({ ...settings, temperatureUnits: unit });
+  };
 
-        <RangeInput
-          min={5}
-          max={60}
-          units="min"
-          label="Update weather every"
-          step={5} initialValue={15} />
+  const onChangeShowWeatherTime = (days: number) => {
+    setSettings({ ...settings, daysToShowWeatherFor: days });
+  };
 
-        <TemperatureUnitsInput initialValue={TemperatureUnit.UNIT_CELSIUS} onChange={() => {}}/>
+  const onChangeUpdateWeatherTime = (mins: number) => {
+    setSettings({ ...settings, minsToUpdateWeatherEvery: mins });
+  };
 
-      </ScrollView>
-    );
-  }
+  return (
+    <ScrollView>
+      <UserDataForm />
+      <RangeInput
+        min={1}
+        max={6}
+        units={pluralizeDays}
+        label="Show weather for"
+        onChange={onChangeShowWeatherTime}
+        step={1} initialValue={settings.daysToShowWeatherFor} />
+
+      <RangeInput
+        min={5}
+        max={60}
+        units="min"
+        label="Update weather every"
+        onChange={onChangeUpdateWeatherTime}
+        step={5} initialValue={settings.minsToUpdateWeatherEvery} />
+
+      <TemperatureUnitsInput initialValue={settings.temperatureUnits}
+        onChange={onChangeTemperatureUnits} />
+
+    </ScrollView>
+  );
+
 }
