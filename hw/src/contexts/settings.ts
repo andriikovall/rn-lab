@@ -12,6 +12,7 @@ const authContext = createContext<SettingsContext>({
     daysToShowWeatherFor: 5,
     minsToUpdateWeatherEvery: 5,
     temperatureUnits: TemperatureUnit.UNIT_CELSIUS,
+    cityName: 'Kyiv,',
   },
   setSettings: () => {},
 });

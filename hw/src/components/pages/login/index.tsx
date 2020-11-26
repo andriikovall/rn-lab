@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import LoginForm from './LoginForm';
 
-interface LoginProps {
+
+export default function Login() {
+  return (
+    <>
+      <View style={styles.container}>
+        <LoginForm />
+      </View>
+    </>
+  );
 }
 
-interface LoginState {
-}
-
-export default class Login extends Component<LoginProps, LoginState> {
-  constructor(props: LoginProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <>
-        <View style={styles.container}>
-          <LoginForm />
-        </View>
-      </>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {

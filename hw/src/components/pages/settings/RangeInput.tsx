@@ -12,9 +12,10 @@ interface RangeInputProps {
   max: number;
   step: number;
   initialValue?: number;
+  onChange?: (val: number) => void;
 }
 
-export default function RangeInput({ units, label, min, max, step, initialValue }: RangeInputProps) {
+export default function RangeInput({ units, label, min, max, step, initialValue, onChange }: RangeInputProps) {
   const [rangeVal, setRangeVal] = useState(initialValue || min);
 
   const unitsNameLabel: string = isFunction(units) ? (units as Function)(rangeVal) : units;
@@ -24,6 +25,9 @@ export default function RangeInput({ units, label, min, max, step, initialValue 
 
   const onRangeValChange = (val: number) => {
     setRangeVal(val);
+    if (onChange) {
+      onChange(val);
+    }
   };
 
   return (

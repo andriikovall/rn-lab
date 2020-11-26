@@ -5,9 +5,7 @@ import UserDataForm from './UserDataFrom';
 import pluralize from 'pluralize';
 import TemperatureUnitsInput from './TemperatureUnitsInput';
 import TemperatureUnit from '../../../enums/temperatureUnits';
-import weatherService from '../../../services/weatherService';
 import useSettings from '../../../hooks/useSettings';
-
 
 
 export default function Settings() {
@@ -20,7 +18,14 @@ export default function Settings() {
 
   const onChangeTemperatureUnits = (unit: TemperatureUnit) => {
     setSettings({ ...settings, temperatureUnits: unit });
-    // weatherService.setDisplayTemperatureUnits(unit);
+  };
+
+  const onChangeShowWeatherTime = (days: number) => {
+    setSettings({ ...settings, daysToShowWeatherFor: days });
+  };
+
+  const onChangeUpdateWeatherTime = (mins: number) => {
+    setSettings({ ...settings, minsToUpdateWeatherEvery: mins });
   };
 
   return (
@@ -28,9 +33,10 @@ export default function Settings() {
       <UserDataForm />
       <RangeInput
         min={1}
-        max={5}
+        max={6}
         units={pluralizeDays}
         label="Show weather for"
+        onChange={onChangeShowWeatherTime}
         step={1} initialValue={settings.daysToShowWeatherFor} />
 
       <RangeInput
@@ -38,6 +44,7 @@ export default function Settings() {
         max={60}
         units="min"
         label="Update weather every"
+        onChange={onChangeUpdateWeatherTime}
         step={5} initialValue={settings.minsToUpdateWeatherEvery} />
 
       <TemperatureUnitsInput initialValue={settings.temperatureUnits}

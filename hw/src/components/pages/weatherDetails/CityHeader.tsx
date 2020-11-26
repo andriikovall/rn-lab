@@ -28,7 +28,7 @@ export default function CityHeader({ weather }: CityHeaderProps) {
       <View style={styles.currentWeather}>
         <View style={styles.shortWeather}>
           <WeatherIcon state={weatherState} style={styles.weatherIcon} size={90} />
-          <View style={styles.weatherTemperature}>
+          <View>
             <AppText size={70}>{temperature}</AppText>
             <AppText size={14}>{displayWeatherStateName}</AppText>
           </View>
@@ -65,10 +65,6 @@ const styles = StyleSheet.create({
   weatherIcon: {
     marginRight: 30,
     alignSelf: 'center',
-  },
-  weatherTemperature: {
-    // i think it's not ok to leave empty styles,
-    // but i will do this for semantic and more clear understanding like classes in html
   },
   sunState: {
     alignItems: 'center',
