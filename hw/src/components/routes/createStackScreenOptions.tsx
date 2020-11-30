@@ -16,7 +16,7 @@ type NavigationType = NavigationProp<Record<string, object | undefined>, string,
   routes: any;
   type: string;
   stale: false;
-}>, {}, {}>
+}>, {}, {}>;
 
 interface CreateStackScreenOptions {
   title?: string;
