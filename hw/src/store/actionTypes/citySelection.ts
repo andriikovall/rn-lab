@@ -1,0 +1,3 @@
+export const CITIES_GET = 'CITIES_GET';
+export const CITIES_GET_SUCCESS = 'CITIES_GET_SUCCESS';
+export const CITIES_GET_FAILED = 'CITIES_GET_FAILED';
