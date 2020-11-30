@@ -1,7 +1,6 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import colors from '../../constants/colors';
-import loadingContext from '../../contexts/loading';
 import WeatherState from '../../enums/weatherState';
 import WeatherIcon from './WeatherIcon';
 
@@ -9,10 +8,9 @@ interface LoaderProps {
   overrideContextLoadingValue?: boolean;
 }
 
-export default function Loader({ overrideContextLoadingValue }: LoaderProps) {
+export default function Loader({ overrideContextLoadingValue = true }: LoaderProps) {
 
-  const { isLoading } = useContext(loadingContext);
-  const shouldBeLoading = overrideContextLoadingValue || isLoading;
+  const shouldBeLoading = overrideContextLoadingValue;
 
   const containerOpacityAndZIndex = useRef(new Animated.Value(0)).current;
   const loaderScale = useRef(new Animated.Value(0)).current;

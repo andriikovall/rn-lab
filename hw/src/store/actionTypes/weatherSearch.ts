@@ -1,0 +1,2 @@
+export const DAY_SELECTED = 'DAY_SELECTED';
+export const CITY_SELECTED = 'CITY_SELECTED';

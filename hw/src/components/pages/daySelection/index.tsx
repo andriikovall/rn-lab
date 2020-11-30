@@ -1,61 +1,55 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { RefreshControl, ScrollView, TouchableOpacity } from 'react-native';
-import delayedPromise from '../../../helpers/delayedPromise';
-import useCityName from '../../../hooks/useCityName';
+import { useDispatch, useSelector } from 'react-redux';
 import useErrorHandler from '../../../hooks/useErrorHandler';
-import useSettings from '../../../hooks/useSettings';
 import ShortDayWeather from '../../../models/shortDayWeather';
-import weatherService from '../../../services/weatherService';
+import AppState from '../../../models/store/appState';
+import DaySelectionState from '../../../models/store/states/daySelectionState';
+import { getDays } from '../../../store/actionCreators/daySelection';
+import { daySelected } from '../../../store/actionCreators/weatherSearch';
 import Loader from '../../shared/Loader';
-import { WeatherDetailsNavigationParams } from '../weatherDetails';
 import DayItem from './DayItem';
 
 
 export default function DaySelection() {
-  const [days, setDays] = useState<ShortDayWeather[] | null>(null);
-  const [minTemperature, setMinTemperature] = useState<number>(0);
-  const [maxTemperature, setMaxTemperature] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigation = useNavigation();
-  const [cityName] = useCityName();
-  const { settings } = useSettings();
   const errorHandler = useErrorHandler({ errorTitle: 'Failed to load days' });
+
+  const dispatch = useDispatch();
+  const { fetchingDays, days, error } = useSelector<AppState, DaySelectionState>(state => state.daySelection);
+
+  const { min, max } = getMinMaxDisplayTemperature(days);
 
   useEffect(() => {
     loadDays();
   }, []);
 
-  const loadDays = async () => {
-    setIsLoading(true);
-    try {
-      const responseDays = (await weatherService.getShortDaysWeather(cityName))
-        .slice(0, settings.daysToShowWeatherFor);
-      await delayedPromise(null, null, 1000);
-      setDays(responseDays);
-      const { min, max } = getMinMaxDisplayTemperature(responseDays);
-      setMinTemperature(min);
-      setMaxTemperature(max);
-    } catch (err) {
-      errorHandler(err);
+  useEffect(() => {
+    if (error) {
+      errorHandler(error);
     }
-    setIsLoading(false);
+  }, [error]);
+
+  const loadDays = () => {
+    dispatch(getDays());
   };
 
   const onDayPress = (index: number) => {
-    navigation.navigate('WeatherDetails', { dayOffset: index } as WeatherDetailsNavigationParams);
+    dispatch(daySelected(index));
+    navigation.navigate('WeatherDetails');
   };
 
   return (
     <>
-      <Loader overrideContextLoadingValue={isLoading} />
+      <Loader overrideContextLoadingValue={fetchingDays} />
       <ScrollView refreshControl={<RefreshControl refreshing={false} onRefresh={loadDays} />}>
         {days?.map((d, index) =>
           <TouchableOpacity key={index} activeOpacity={0.5} onPress={() => onDayPress(index)}>
             <DayItem
-              minTemperature={minTemperature}
-              maxTemperature={maxTemperature}
+              minTemperature={min}
+              maxTemperature={max}
               item={d} />
           </TouchableOpacity>)}
       </ScrollView>
