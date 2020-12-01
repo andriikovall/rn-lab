@@ -7,20 +7,21 @@ import City from './City';
 interface CitiesListProps {
   cities: ShortCity[];
   onCityPressed: (city: ShortCity) => void;
+  loadingCities: boolean;
 }
 
-export default function CitiesList({ cities, onCityPressed }: CitiesListProps) {
+export default function CitiesList({ cities, onCityPressed, loadingCities }: CitiesListProps) {
   const renderItem = ({ item }: { item: ShortCity }) =>
     <TouchableOpacity onPress={() => onCityPressed(item)}>
       <City city={item} />
     </TouchableOpacity>;
 
   const keyExtractor = (c: ShortCity) => c.id;
+  const shouldShowNotFoundText = !loadingCities && !cities?.length;
   return (
     <View style={styles.list}>
-      {cities.length
-        ? <FlatList data={cities} keyExtractor={keyExtractor} renderItem={renderItem} />
-        : <NotFoundText />}
+      <FlatList data={cities} keyExtractor={keyExtractor} renderItem={renderItem} />
+      {shouldShowNotFoundText && <NotFoundText />}
     </View>
   );
 }

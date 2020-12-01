@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import LoginCredentials from '../../../models/loginCredentials';
@@ -6,12 +6,10 @@ import formConstraints from '../../../constants/formConstraints';
 import LoginButton from './LoginButton';
 import colors from '../../../constants/colors';
 import { baseTextStyle, Warning } from '../../shared/Text';
-import loadingContext from '../../../contexts/loading';
-import AuthService from '../../../services/authService';
-import User from '../../../models/user';
-import delayedPromise from '../../../helpers/delayedPromise';
-import authContext from '../../../contexts/auth';
-import useErrorHandler from '../../../hooks/useErrorHandler';
+import { useDispatch, useSelector } from 'react-redux';
+import AuthState from '../../../models/store/states/authState';
+import AppState from '../../../models/store/appState';
+import { authenticate } from '../../../store/actionCreators/auth';
 
 interface LoginFormProps {
 }
@@ -19,29 +17,12 @@ interface LoginFormProps {
 export default function LoginForm(_props: LoginFormProps) {
 
   const { control, handleSubmit, errors } = useForm<LoginCredentials>();
+  const { error } = useSelector<AppState, AuthState>(state => state.auth);
+  const dispatch = useDispatch();
 
-  const { setIsLoading } = useContext(loadingContext);
-  const { setUser } = useContext(authContext);
-
-  const errorHandler = useErrorHandler();
 
   const onSubmit = (value: LoginCredentials) => {
-    setIsLoading(true);
-    delayedPromise(null, null, 3000)
-      .then(() => AuthService.authenticate(value))
-      .then((user: User | null) => {
-        if (user) {
-          setUser(user);
-        } else {
-          errorHandler(null, { errorTitle: 'Error', errorMessage: 'Invalid credentials' });
-        }
-      })
-      .catch((err) => {
-        errorHandler(err);
-      })
-      .then(() => {
-        setIsLoading(false);
-      });
+    dispatch(authenticate(value));
   };
 
   const renderInput = (inputProps: TextInputProps) => ({ onChange, onBlur, value }: any) => (
@@ -99,6 +80,8 @@ export default function LoginForm(_props: LoginFormProps) {
 
         <Warning size={15}>{errors.password?.message}</Warning>
         <Warning size={15}>{errors.login?.message}</Warning>
+        <Warning size={15}>{error?.title}</Warning>
+        <Warning size={15}>{error?.message}</Warning>
 
       </View>
       <View style={styles.loginButtonContainer}>

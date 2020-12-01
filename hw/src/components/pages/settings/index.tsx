@@ -5,27 +5,31 @@ import UserDataForm from './UserDataFrom';
 import pluralize from 'pluralize';
 import TemperatureUnitsInput from './TemperatureUnitsInput';
 import TemperatureUnit from '../../../enums/temperatureUnits';
-import useSettings from '../../../hooks/useSettings';
+import SettingsState from '../../../models/store/states/settingsState';
+import { useDispatch, useSelector } from 'react-redux';
+import AppState from '../../../models/store/appState';
+import { updateSettings } from '../../../store/actionCreators/settings';
 
 
 export default function Settings() {
 
-  const { settings, setSettings } = useSettings();
+  const settings: SettingsState = useSelector<AppState, SettingsState>(state => state.settings);
+  const dispatch = useDispatch();
 
   const pluralizeDays = (val: number) => {
     return pluralize('days', val);
   };
 
   const onChangeTemperatureUnits = (unit: TemperatureUnit) => {
-    setSettings({ ...settings, temperatureUnits: unit });
+    dispatch(updateSettings({ temperatureUnits: unit }));
   };
 
   const onChangeShowWeatherTime = (days: number) => {
-    setSettings({ ...settings, daysToShowWeatherFor: days });
+    dispatch(updateSettings({ daysToShowWeatherFor: days }));
   };
 
   const onChangeUpdateWeatherTime = (mins: number) => {
-    setSettings({ ...settings, minsToUpdateWeatherEvery: mins });
+    dispatch(updateSettings({ minsToUpdateWeatherEvery: mins }));
   };
 
   return (

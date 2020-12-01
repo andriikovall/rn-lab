@@ -1,4 +1,5 @@
 import AuthState from './states/authState';
+import CitySelectionState from './states/citySelectionState';
 import DaySelectionState from './states/daySelectionState';
 import SettingsState from './states/settingsState';
 import SharedState from './states/sharedState';
@@ -12,4 +13,5 @@ export default interface AppState {
   daySelection: DaySelectionState;
   weatherSearch: WeatherSearchState;
   shared?: SharedState;
+  citySelection: CitySelectionState;
 };

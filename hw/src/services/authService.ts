@@ -9,7 +9,7 @@ class AuthService {
   private cachedUser: User | null = null;
 
   private users: User[] = [
-    { age: 20, name: 'Andrii', login: 'test', password: 'test' },
+    { age: 20, name: 'Andrii', login: 'aaa', password: 'aaa' },
     { age: 123, name: 'Bob', login: 'bob', password: 'bob_password' },
   ];
 

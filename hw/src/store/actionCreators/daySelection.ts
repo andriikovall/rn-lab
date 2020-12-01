@@ -3,9 +3,9 @@ import { GetDaysAction, GetDaysSuccessAction, GetDaysFailedAction } from './../.
 import ShortDayWeather from '../../models/shortDayWeather';
 import { createError } from '../../models/error';
 
-export const getDays = (cityName: string): GetDaysAction => ({
+export const getDays = (): GetDaysAction => ({
   type: DAY_SELECTION_GET_DAYS,
-  payload: cityName,
+  payload: undefined,
 });
 
 export const getDaysSuccess = (days: ShortDayWeather[]): GetDaysSuccessAction => ({

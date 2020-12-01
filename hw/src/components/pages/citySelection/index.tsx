@@ -1,51 +1,53 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import SearchBar from './SearchBar';
 import { StyleSheet, View } from 'react-native';
 import ShortCity from '../../../models/shortCity';
-import WeatherState from '../../../enums/weatherState';
 import CitiesList from './CitiesList';
 import { useNavigation } from '@react-navigation/native';
-import useCityName from '../../../hooks/useCityName';
-
-
-// openweather API doesn't have methods to show cities by query
-// so I have to hardcode some values
-const hardcodedCities: ShortCity[] = [
-  { id: '1', name: 'Kyiv', temperature: 280, weatherState: WeatherState.CLOUDY },
-  { id: '2', name: 'Kharkiv', temperature: 281, weatherState: WeatherState.THUNDERSTORM },
-  { id: '3', name: 'Odessa', temperature: 281, weatherState: WeatherState.FOG },
-];
+import Loader from '../../shared/Loader';
+import CitySelectionState from '../../../models/store/states/citySelectionState';
+import { useDispatch, useSelector } from 'react-redux';
+import AppState from '../../../models/store/appState';
+import { getCities } from '../../../store/actionCreators/citySelection';
+import { citySelected } from '../../../store/actionCreators/weatherSearch';
 
 export default function CitySelection() {
-  const [cities] = useState<ShortCity[]>(hardcodedCities);
-  const [filteredCities, setFilteredCities] = useState<ShortCity[]>([ ...hardcodedCities ]);
-  const [, setCityName] = useCityName();
+  const { cities, fetchingCities } = useSelector<AppState, CitySelectionState>(state => state.citySelection);
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
+  useEffect(() => {
+    onSearchChange('');
+  }, []);
+
   const onSearchChange = (input: string) => {
-    const upperCasedInput = input.toUpperCase();
-    const filtered = cities.filter(c => c?.name?.toUpperCase().includes(upperCasedInput));
-    setFilteredCities(filtered);
+    dispatch(getCities(input));
   };
 
   const onCityPressed = (city: ShortCity) => {
-    setCityName(city.name);
+    dispatch(citySelected(city.name));
     navigation.navigate('WeatherDetails');
   };
 
   return (
-    <View style={styles.container}>
-      <SearchBar onChange={onSearchChange} nativeInputProps={{ placeholder: 'Find your city' }}/>
-      <CitiesList cities={filteredCities} onCityPressed={onCityPressed} />
+    <View style={container}>
+      <SearchBar onChange={onSearchChange} nativeInputProps={{ placeholder: 'Find your city' }} />
+      <View style={citiesContainer}>
+        <Loader overrideContextLoadingValue={fetchingCities} />
+        <CitiesList cities={cities} onCityPressed={onCityPressed} loadingCities={fetchingCities} />
+      </View>
     </View>
   );
 
 }
 
-const styles = StyleSheet.create({
+const { container, citiesContainer } = StyleSheet.create({
   container: {
-    padding: 5,
     marginBottom: 40,
+  },
+  citiesContainer: {
+    height: '100%',
   },
 });
 

@@ -1,3 +1,4 @@
+import { Reducer } from 'react';
 import { WeatherDetailsActionTypes } from './../../models/store/actions/weatherDetailsActions';
 import WeatherDetailsState from '../../models/store/states/weatherDetailsState';
 import {
@@ -10,8 +11,8 @@ const initialState: WeatherDetailsState = {
   weather: null,
 };
 
-const weatherDetailsReducer =
-  (state: WeatherDetailsState = initialState, action: WeatherDetailsActionTypes): WeatherDetailsState => {
+const weatherDetailsReducer: Reducer<WeatherDetailsState, WeatherDetailsActionTypes> =
+  (state = initialState, action) => {
 
     switch (action.type) {
       case WEATHER_DETAILS_GET_WEATHER:

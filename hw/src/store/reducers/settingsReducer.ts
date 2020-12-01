@@ -1,3 +1,4 @@
+import { Reducer } from 'react';
 import { UPDATE_SETTINGS } from './../actionTypes/settings';
 import { SettingsActionTypes } from './../../models/store/actions/settingsActions';
 import TemperatureUnit from '../../enums/temperatureUnits';
@@ -9,7 +10,7 @@ const initialState: SettingsState = {
   temperatureUnits: TemperatureUnit.UNIT_CELSIUS,
 };
 
-const settingsReducer = (state: SettingsState = initialState, action: SettingsActionTypes): SettingsState => {
+const settingsReducer: Reducer<SettingsState, SettingsActionTypes> = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_SETTINGS:
       return {

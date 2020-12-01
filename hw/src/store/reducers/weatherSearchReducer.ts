@@ -1,3 +1,4 @@
+import { Reducer } from 'react';
 import { WeatherSearchActionTypes } from './../../models/store/actions/weatherSearchActions';
 import WeatherSearchState from '../../models/store/states/weatherSearchState';
 import { DAY_SELECTED, CITY_SELECTED } from '../actionTypes/weatherSearch';
@@ -7,8 +8,8 @@ const initialState: WeatherSearchState = {
   dayOffset: 0,
 };
 
-const weatherSearchReducer =
-  (state: WeatherSearchState = initialState, action: WeatherSearchActionTypes): WeatherSearchState => {
+const weatherSearchReducer: Reducer<WeatherSearchState, WeatherSearchActionTypes> =
+  (state = initialState, action): WeatherSearchState => {
     switch (action.type) {
       case DAY_SELECTED:
         return {

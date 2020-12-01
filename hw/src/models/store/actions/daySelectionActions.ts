@@ -3,7 +3,7 @@ import AppError from '../../error';
 import ShortDayWeather from '../../shortDayWeather';
 import { Action } from './action';
 
-export type GetDaysAction = Action<typeof DAY_SELECTION_GET_DAYS, string>;
+export type GetDaysAction = Action<typeof DAY_SELECTION_GET_DAYS>;
 export type GetDaysSuccessAction = Action<typeof DAY_SELECTION_GET_DAYS_SUCCESS, ShortDayWeather[]>;
 export type GetDaysFailedAction = Action<typeof DAY_SELECTION_GET_DAYS_FAILED, AppError>;
 
