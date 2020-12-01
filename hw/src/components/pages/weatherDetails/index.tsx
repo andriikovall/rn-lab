@@ -24,11 +24,6 @@ export default function WeatherDetails() {
   const { weather } = useSelector<AppState, WeatherDetailsState>(state => state.weatherDetails);
   const dispatch = useDispatch();
 
-  // @todo remove this when implemented
-  // const dayOffset = useNavParams<WeatherDetailsNavigationParams>()?.dayOffset || 0;
-  // const [cityName] = useCityName();
-  // const { setIsLoading } = useLoading();
-
   const loadWeather = async () => {
     dispatch(getWeather());
     setLastReloadTime(Date.now());

@@ -11,7 +11,7 @@ import Loader from './shared/Loader';
 
 export default function Main() {
   const { fetchingUser } = useSelector<AppState, AuthState>((state) => state.auth);
-  const sharedState = useSelector<AppState, SharedState | undefined>(state => state.shared);
+  const sharedState = useSelector<AppState, SharedState>(state => state.shared);
   const isAppLoading = sharedState?.loading || fetchingUser;
   return (
     <NavigationContainer>

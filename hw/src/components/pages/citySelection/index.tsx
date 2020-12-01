@@ -11,15 +11,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppState from '../../../models/store/appState';
 import { getCities } from '../../../store/actionCreators/citySelection';
 import { citySelected } from '../../../store/actionCreators/weatherSearch';
+import useErrorHandler from '../../../hooks/useErrorHandler';
 
 export default function CitySelection() {
-  const { cities, fetchingCities } = useSelector<AppState, CitySelectionState>(state => state.citySelection);
+  const { cities, fetchingCities, error } = useSelector<AppState, CitySelectionState>(state => state.citySelection);
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const errorHandler = useErrorHandler();
 
   useEffect(() => {
     onSearchChange('');
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      errorHandler(error);
+    }
+  }, [error]);
+
 
   const onSearchChange = (input: string) => {
     dispatch(getCities(input));

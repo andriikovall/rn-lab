@@ -12,6 +12,6 @@ export default interface AppState {
   weatherDetails: WeatherDetailsState;
   daySelection: DaySelectionState;
   weatherSearch: WeatherSearchState;
-  shared?: SharedState;
+  shared: SharedState;
   citySelection: CitySelectionState;
 };

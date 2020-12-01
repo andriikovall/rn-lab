@@ -19,15 +19,18 @@ export default function DaySelection() {
 
   const dispatch = useDispatch();
   const { fetchingDays, days, error } = useSelector<AppState, DaySelectionState>(state => state.daySelection);
-  if (error) {
-    errorHandler(error);
-  }
 
   const { min, max } = getMinMaxDisplayTemperature(days);
 
   useEffect(() => {
     loadDays();
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      errorHandler(error);
+    }
+  }, [error]);
 
   const loadDays = () => {
     dispatch(getDays());
