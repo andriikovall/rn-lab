@@ -1,19 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 import colors from '../constants/colors';
-import useAuth from '../hooks/useAuth';
+import AppState from '../models/store/appState';
+import AuthState from '../models/store/states/authState';
+import SharedState from '../models/store/states/sharedState';
 import Routes from './routes';
 import Loader from './shared/Loader';
 
 export default function Main() {
-  const user = useAuth().getUser();
-  const isLoadingUser = user === undefined;
+  const { fetchingUser } = useSelector<AppState, AuthState>((state) => state.auth);
+  const sharedState = useSelector<AppState, SharedState>(state => state.shared);
+  const isAppLoading = sharedState?.loading || fetchingUser;
   return (
     <NavigationContainer>
       <SafeAreaView>
         <View style={wrapper}>
-          <Loader overrideContextLoadingValue={isLoadingUser}/>
+          <Loader overrideContextLoadingValue={isAppLoading}/>
           <Routes />
         </View>
       </SafeAreaView>

@@ -16,6 +16,8 @@ module.exports = {
     'prettier/prettier': 0,
     'indent': ['error', 2],
     'no-use-before-define': 0,
-    'indent': ['error', 2, { 'SwitchCase': 1 }]
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
+    "semi": "off",
+    "@typescript-eslint/semi": ["error"],
   }
 };
