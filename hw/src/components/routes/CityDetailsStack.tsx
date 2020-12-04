@@ -10,6 +10,7 @@ import colors from '../../constants/colors';
 import CitySelection from '../pages/citySelection';
 import styles from './styles';
 import Settings from '../pages/settings';
+import routesNames from './routesNames';
 
 const Stack = createStackNavigator();
 
@@ -24,18 +25,18 @@ export default function CityDetailsStackScreen() {
       style={styles.headerIcon} />;
 
   const onCityLeftPress = () => {
-    navigation.navigate('Settings');
+    navigation.navigate(routesNames.SETTINGS);
   };
 
   const onCityRightPress = () => {
-    navigation.navigate('Cities');
+    navigation.navigate(routesNames.CITY_SELECTION);
   };
 
   return (
     <Stack.Navigator screenOptions={{
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}>
-      <Stack.Screen name="WeatherDetails" component={wrapPage(WeatherDetails)}
+      <Stack.Screen name={routesNames.WEATHER_DETAILS} component={wrapPage(WeatherDetails)}
         options={createStackScreenOptions({
           navigation,
           leftIcon: leftCityIcon,
@@ -43,14 +44,14 @@ export default function CityDetailsStackScreen() {
           onLeftPress: onCityLeftPress,
           onRightPress: onCityRightPress,
         })} />
-      <Stack.Screen name="Settings" component={wrapPage(Settings)}
+      <Stack.Screen name={routesNames.SETTINGS} component={wrapPage(Settings)}
         options={createStackScreenOptions({
-          onLeftPress: () => navigation.navigate('WeatherDetails'),
+          onLeftPress: () => navigation.navigate(routesNames.WEATHER_DETAILS),
           navigation,
         })} />
-      <Stack.Screen name="Cities" component={wrapPage(CitySelection)}
+      <Stack.Screen name={routesNames.CITY_SELECTION} component={wrapPage(CitySelection)}
         options={createStackScreenOptions({
-          onLeftPress: () => navigation.navigate('WeatherDetails'),
+          onLeftPress: () => navigation.navigate(routesNames.WEATHER_DETAILS),
           navigation,
         })} />
     </Stack.Navigator>

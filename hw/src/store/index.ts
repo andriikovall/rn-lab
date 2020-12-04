@@ -16,6 +16,9 @@ const persistConfig = {
     'daySelection',
     'shared',
     'citySelection',
+    // it should be in blacklist for key-chain demo but removed for simpler
+    // authentication. Removed because key-chain doesn't work well
+    // 'auth'
   ] as (keyof AppState)[],
 };
 
