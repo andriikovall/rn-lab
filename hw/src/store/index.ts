@@ -16,13 +16,14 @@ const persistConfig = {
     'daySelection',
     'shared',
     'citySelection',
+    'auth'
   ] as (keyof AppState)[],
 };
 
 const middleWare: Redux.Middleware[] = [];
 
 if (__DEV__) {
-  middleWare.push(logger);
+  // middleWare.push(logger);
 }
 
 

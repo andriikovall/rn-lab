@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import LoginCredentials from '../../../models/loginCredentials';
@@ -10,18 +10,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import AuthState from '../../../models/store/states/authState';
 import AppState from '../../../models/store/appState';
 import { authenticate } from '../../../store/actionCreators/auth';
+import { getGenericPassword, setGenericPassword } from 'react-native-keychain';
 
 interface LoginFormProps {
 }
 
 export default function LoginForm(_props: LoginFormProps) {
 
-  const { control, handleSubmit, errors } = useForm<LoginCredentials>();
+  const [initialValue, setInitialValue] =
+    useState<LoginCredentials>({ login: '', password: '' }) ;
+
+  const { control, handleSubmit, errors } = useForm<LoginCredentials>({
+    defaultValues: initialValue,
+  });
   const { error } = useSelector<AppState, AuthState>(state => state.auth);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    // couldn't complete this task due to lagging and performance
+    // I thing it is because of my slow PC, but data is stored on the phone...
+    // so here this code is, it has to work, but I can't use it for some reason
+
+    // getGenericPassword()
+    //   .then(creds => {
+    //     if (creds) {
+    //       setInitialValue({ login: creds.username, password: creds.password });
+    //     }
+    //   })
+
+  }, []);
+
 
   const onSubmit = (value: LoginCredentials) => {
+    // ignore promise result, not crucial here
+    // setGenericPassword(value.login, value.password);
+    //
     dispatch(authenticate(value));
   };
 
