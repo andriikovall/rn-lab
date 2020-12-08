@@ -9,6 +9,7 @@ import AppState from '../../../models/store/appState';
 import DaySelectionState from '../../../models/store/states/daySelectionState';
 import { getDays } from '../../../store/actionCreators/daySelection';
 import { daySelected } from '../../../store/actionCreators/weatherSearch';
+import routesNames from '../../routes/routesNames';
 import Loader from '../../shared/Loader';
 import DayItem from './DayItem';
 
@@ -38,7 +39,7 @@ export default function DaySelection() {
 
   const onDayPress = (index: number) => {
     dispatch(daySelected(index));
-    navigation.navigate('WeatherDetails');
+    navigation.navigate(routesNames.WEATHER_DETAILS);
   };
 
   return (

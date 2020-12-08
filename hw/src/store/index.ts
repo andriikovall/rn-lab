@@ -16,14 +16,16 @@ const persistConfig = {
     'daySelection',
     'shared',
     'citySelection',
-    'auth'
+    // it should be in blacklist for key-chain demo but removed for simpler
+    // authentication. Removed because key-chain doesn't work well
+    // 'auth'
   ] as (keyof AppState)[],
 };
 
 const middleWare: Redux.Middleware[] = [];
 
 if (__DEV__) {
-  // middleWare.push(logger);
+  middleWare.push(logger);
 }
 
 

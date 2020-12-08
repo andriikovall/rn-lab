@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "538077851260",
+    "project_id": "weather-rn-lab",
+    "storage_bucket": "weather-rn-lab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538077851260:android:a9dcefb07b187eb821e3f9",
+        "android_client_info": {
+          "package_name": "com.hw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538077851260-f1plkce4qc8039nthrreoeah16rsdmm7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hw",
+            "certificate_hash": "23f2a3a8f13bd3f6c0c21bfe7c2064237e88f1dd"
+          }
+        },
+        {
+          "client_id": "538077851260-gmampd058lrkhhuco89qephf5c3m0ovr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgzUmhuLRflflMH5nsKlFmFQaV-QujjnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538077851260-gmampd058lrkhhuco89qephf5c3m0ovr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
