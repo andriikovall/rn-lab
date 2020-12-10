@@ -12,6 +12,7 @@ import AppState from '../../../models/store/appState';
 import { getCities } from '../../../store/actionCreators/citySelection';
 import { citySelected } from '../../../store/actionCreators/weatherSearch';
 import useErrorHandler from '../../../hooks/useErrorHandler';
+import routesNames from '../../routes/routesNames';
 
 export default function CitySelection() {
   const { cities, fetchingCities, error } = useSelector<AppState, CitySelectionState>(state => state.citySelection);
@@ -36,7 +37,7 @@ export default function CitySelection() {
 
   const onCityPressed = (city: ShortCity) => {
     dispatch(citySelected(city.name));
-    navigation.navigate('WeatherDetails');
+    navigation.navigate(routesNames.WEATHER_DETAILS);
   };
 
   return (

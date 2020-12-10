@@ -5,6 +5,7 @@ import DaySelection from '../pages/daySelection';
 import colors from '../../constants/colors';
 import CityDetailsStackScreen from './CityDetailsStack';
 import styles from './styles';
+import routesNames from './routesNames';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,11 +23,11 @@ export default function LoggedInNavigation() {
       labelPosition: 'beside-icon',
       style: styles.tabBar,
     }}>
-      <Tab.Screen name="Home" component={CityDetailsStackScreen}
+      <Tab.Screen name={routesNames.HOME} component={CityDetailsStackScreen}
         options={{
           title: weatherTitle,
         }} />
-      <Tab.Screen name="DaySelection" component={wrapPage(DaySelection)} options={{
+      <Tab.Screen name={routesNames.DAY_SELECTION} component={wrapPage(DaySelection)} options={{
         title: forecastTitle,
       }} />
     </Tab.Navigator>
