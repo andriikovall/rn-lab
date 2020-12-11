@@ -10,15 +10,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import AuthState from '../../../models/store/states/authState';
 import AppState from '../../../models/store/appState';
 import { authenticate } from '../../../store/actionCreators/auth';
-import { getGenericPassword, setGenericPassword } from 'react-native-keychain';
+// import { getGenericPassword, setGenericPassword } from 'react-native-keychain';
 
 interface LoginFormProps {
 }
 
 export default function LoginForm(_props: LoginFormProps) {
 
-  const [initialValue, setInitialValue] =
-    useState<LoginCredentials>({ login: '', password: '' }) ;
+  // used for keychain and removed for linter
+  // const [initialValue, setInitialValue] =
+  const [initialValue] =
+    useState<LoginCredentials>({ login: '', password: '' });
 
   const { control, handleSubmit, errors } = useForm<LoginCredentials>({
     defaultValues: initialValue,
@@ -59,8 +61,15 @@ export default function LoginForm(_props: LoginFormProps) {
     />
   );
 
-  const renderLoginInput = renderInput({ placeholder: 'Login' });
-  const renderPasswordInput = renderInput({ placeholder: 'Password', secureTextEntry: true });
+  const renderLoginInput = renderInput({
+    placeholder: 'Login',
+    testID: 'LoginForm.LoginInput',
+  });
+  const renderPasswordInput = renderInput({
+    placeholder: 'Password',
+    secureTextEntry: true,
+    testID: 'LoginForm.PasswordInput',
+  });
 
   return (
     <>
@@ -101,10 +110,10 @@ export default function LoginForm(_props: LoginFormProps) {
           />
         </View>
 
-        <Warning size={15}>{errors.password?.message}</Warning>
-        <Warning size={15}>{errors.login?.message}</Warning>
-        <Warning size={15}>{error?.title}</Warning>
-        <Warning size={15}>{error?.message}</Warning>
+        <Warning testID="LoginForm.PasswordWarning" size={15}>{errors.password?.message}</Warning>
+        <Warning testID="LoginForm.LoginWarning" size={15}>{errors.login?.message}</Warning>
+        <Warning testID="LoginForm.ErrorTitle" size={15}>{error?.title}</Warning>
+        <Warning testID="LoginForm.ErrorMessage" size={15}>{error?.message}</Warning>
 
       </View>
       <View style={styles.loginButtonContainer}>

@@ -3,7 +3,7 @@ import { CITIES_GET, CITIES_GET_FAILED, CITIES_GET_SUCCESS } from './../actionTy
 import { CitySelectionActionTypes } from './../../models/store/actions/citySelection';
 import CitySelectionState from '../../models/store/states/citySelectionState';
 
-const initialState: CitySelectionState = {
+export const initialState: CitySelectionState = {
   cities: [],
   fetchingCities: false,
 };

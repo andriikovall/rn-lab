@@ -4,7 +4,7 @@ import { SettingsActionTypes } from './../../models/store/actions/settingsAction
 import TemperatureUnit from '../../enums/temperatureUnits';
 import SettingsState from '../../models/store/states/settingsState';
 
-const initialState: SettingsState = {
+export const initialState: SettingsState = {
   daysToShowWeatherFor: 5,
   minsToUpdateWeatherEvery: 15,
   temperatureUnits: TemperatureUnit.UNIT_CELSIUS,
