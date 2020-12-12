@@ -9,31 +9,38 @@ interface CustomTextProps extends TextProps {
 }
 
 export const Title = (props: CustomTextProps) => (
-  <Text style={[
-    styles.baseText,
-    styles.title,
-    props.size ? { fontSize: props.size } : undefined,
-    props?.style]}>
+  <Text
+    {...props}
+    style={[
+      styles.baseText,
+      styles.title,
+      props.size ? { fontSize: props.size } : undefined,
+      props?.style]}>
     {props.children}
   </Text>
 );
 
 export const Subtitle = (props: CustomTextProps) => (
-  <Text style={[
-    styles.baseText,
-    styles.subtitle,
-    props.size ? { fontSize: props.size } : undefined,
-    props?.style]}>
+  <Text
+    {...props}
+    style={[
+      styles.baseText,
+      styles.subtitle,
+      props.size ? { fontSize: props.size } : undefined,
+      props?.style]}>
     {props.children}
   </Text>
 );
 
 export const AppText = (props: CustomTextProps) => (
-  <Text style={[
-    styles.baseText,
-    styles.text,
-    props.size ? { fontSize: props.size } : undefined,
-    props?.style]}>
+  <Text
+    {...props}
+    style={[
+      styles.baseText,
+      styles.text,
+      props.size ? { fontSize: props.size } : undefined,
+      props?.style]}
+  >
     {props.children}
   </Text>
 );
@@ -43,7 +50,7 @@ export const AppTextSecondary = (props: CustomTextProps) => (
 );
 
 export const Warning = (props: CustomTextProps) => (
-  <AppText { ...props } style={styles.textWarning} />
+  <AppText {...props} style={styles.textWarning} />
 );
 
 const styles = StyleSheet.create({

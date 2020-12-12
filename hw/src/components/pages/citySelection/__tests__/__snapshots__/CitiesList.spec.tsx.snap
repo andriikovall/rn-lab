@@ -99,6 +99,7 @@ exports[`renders all cities as expected 1`] = `
               }
             >
               <Text
+                size={60}
                 style={
                   Array [
                     Object {
@@ -114,6 +115,7 @@ exports[`renders all cities as expected 1`] = `
                     undefined,
                   ]
                 }
+                testID="City.Temperature"
               >
                 -60°C
               </Text>
@@ -144,6 +146,7 @@ exports[`renders all cities as expected 1`] = `
                 someName
               </Text>
               <Text
+                size={20}
                 style={
                   Array [
                     Object {
@@ -161,6 +164,7 @@ exports[`renders all cities as expected 1`] = `
                     },
                   ]
                 }
+                testID="City.WeatherState"
               >
                 // FOG
               </Text>
@@ -213,6 +217,7 @@ exports[`renders all cities as expected 1`] = `
               }
             >
               <Text
+                size={60}
                 style={
                   Array [
                     Object {
@@ -228,6 +233,7 @@ exports[`renders all cities as expected 1`] = `
                     undefined,
                   ]
                 }
+                testID="City.Temperature"
               >
                 -60°C
               </Text>
@@ -258,6 +264,7 @@ exports[`renders all cities as expected 1`] = `
                 someName2
               </Text>
               <Text
+                size={20}
                 style={
                   Array [
                     Object {
@@ -275,6 +282,7 @@ exports[`renders all cities as expected 1`] = `
                     },
                   ]
                 }
+                testID="City.WeatherState"
               >
                 // MOSTLY SUNNY
               </Text>
@@ -327,6 +335,7 @@ exports[`renders all cities as expected 1`] = `
               }
             >
               <Text
+                size={60}
                 style={
                   Array [
                     Object {
@@ -342,6 +351,7 @@ exports[`renders all cities as expected 1`] = `
                     undefined,
                   ]
                 }
+                testID="City.Temperature"
               >
                 -60°C
               </Text>
@@ -372,6 +382,7 @@ exports[`renders all cities as expected 1`] = `
                 someName3
               </Text>
               <Text
+                size={20}
                 style={
                   Array [
                     Object {
@@ -389,6 +400,7 @@ exports[`renders all cities as expected 1`] = `
                     },
                   ]
                 }
+                testID="City.WeatherState"
               >
                 // AH.. SHIT
               </Text>
