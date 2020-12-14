@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render as expected 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderBottomColor": "#45464f",
+        "borderBottomWidth": 2,
+      },
+      Object {
+        "flexDirection": "row",
+        "paddingVertical": 15,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 3,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      size={60}
+      style={
+        Array [
+          Object {
+            "color": "#fffffe",
+            "fontFamily": "PTS55F",
+          },
+          Object {
+            "fontSize": 22,
+          },
+          Object {
+            "fontSize": 60,
+          },
+          undefined,
+        ]
+      }
+      testID="City.Temperature"
+    >
+      -39°C
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 4,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#fffffe",
+            "fontFamily": "PTS55F",
+          },
+          Object {
+            "fontSize": 22,
+          },
+          undefined,
+          undefined,
+        ]
+      }
+    >
+      something
+    </Text>
+    <Text
+      size={20}
+      style={
+        Array [
+          Object {
+            "color": "#fffffe",
+            "fontFamily": "PTS55F",
+          },
+          Object {
+            "fontSize": 22,
+          },
+          Object {
+            "fontSize": 20,
+          },
+          Object {
+            "color": "#45464f",
+          },
+        ]
+      }
+      testID="City.WeatherState"
+    >
+      // CLOUDY
+    </Text>
+  </View>
+</View>
+`;

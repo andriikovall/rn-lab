@@ -12,7 +12,7 @@ interface CitiesListProps {
 
 export default function CitiesList({ cities, onCityPressed, loadingCities }: CitiesListProps) {
   const renderItem = ({ item }: { item: ShortCity }) =>
-    <TouchableOpacity onPress={() => onCityPressed(item)}>
+    <TouchableOpacity onPress={() => onCityPressed(item)} testID={`CitiesList.City.${item.id}`}>
       <City city={item} />
     </TouchableOpacity>;
 
@@ -28,7 +28,7 @@ export default function CitiesList({ cities, onCityPressed, loadingCities }: Cit
 
 function NotFoundText() {
   return (
-    <View style={styles.error}>
+    <View style={styles.error} testID="CitiesList.NotFoundText">
       <AppText>No cities found</AppText>
     </View>
   );

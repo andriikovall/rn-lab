@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import errorAlert from '../../helpers/errorAlert';
 
 interface SharedErrorBoundaryProps {
-  children: any;
+  children?: any;
 }
 
 interface SharedErrorBoundaryState {

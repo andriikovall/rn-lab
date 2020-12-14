@@ -17,11 +17,11 @@ export default function City({ city }: CityProps) {
   return (
     <BorderBottom style={styles.container}>
       <View style={styles.temperature}>
-        <AppText size={60}>{temperature}</AppText>
+        <AppText size={60} testID="City.Temperature">{temperature}</AppText>
       </View>
       <View style={styles.details}>
         <AppText>{city.name}</AppText>
-        <AppTextSecondary size={20}>{weatherStateString}</AppTextSecondary>
+        <AppTextSecondary size={20} testID="City.WeatherState" >{weatherStateString}</AppTextSecondary>
       </View>
     </BorderBottom>
   );

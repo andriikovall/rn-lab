@@ -3,7 +3,7 @@ import { DAY_SELECTION_GET_DAYS, DAY_SELECTION_GET_DAYS_SUCCESS, DAY_SELECTION_G
 import { DaySelectionActionTypes } from './../../models/store/actions/daySelectionActions';
 import DaySelectionState from '../../models/store/states/daySelectionState';
 
-const initialState: DaySelectionState = {
+export const initialState: DaySelectionState = {
   days: [],
   fetchingDays: false,
 };

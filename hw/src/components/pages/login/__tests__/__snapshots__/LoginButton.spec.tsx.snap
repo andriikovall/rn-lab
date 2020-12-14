@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match the snapshot 1`] = `
+<RNGestureHandlerButton
+  collapsable={false}
+  onGestureEvent={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onHandlerStateChange={[Function]}
+  rippleColor={0}
+  testID="LoginButton.TouchableHighlight"
+>
+  <View
+    accessible={true}
+    style={Object {}}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ff6600",
+          "borderRadius": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fffffe",
+            "fontSize": 30,
+            "paddingVertical": 2,
+          }
+        }
+        testID="LoginButton.Text"
+      >
+        SOME TITLE
+      </Text>
+    </View>
+  </View>
+</RNGestureHandlerButton>
+`;

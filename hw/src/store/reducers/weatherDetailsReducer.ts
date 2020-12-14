@@ -6,7 +6,7 @@ import {
   WEATHER_DETAILS_GET_WEATHER,
 } from '../actionTypes/weatherDetails';
 
-const initialState: WeatherDetailsState = {
+export const initialState: WeatherDetailsState = {
   fetchingWeather: false,
   weather: null,
 };
