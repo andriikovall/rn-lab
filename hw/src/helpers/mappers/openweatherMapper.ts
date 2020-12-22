@@ -27,6 +27,9 @@ class OpenweatherResultMapper implements IWeatherAPIResultMapper {
   }
 
   mapResponseToDayWeather(res: OpenweatherResponse, dayOffset: number = 0): DayWeather {
+    if (dayOffset < 0) {
+      dayOffset = 0;
+    }
     // every day has 8 weather objects in list
     // to move to the next day we have to find index with an offseted day
     let offsetIndex = 0;

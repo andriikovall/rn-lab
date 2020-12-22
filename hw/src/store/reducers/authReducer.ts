@@ -3,7 +3,7 @@ import { AuthActionTypes } from './../../models/store/actions/authActions';
 import AuthState from '../../models/store/states/authState';
 import { Reducer } from 'react';
 
-const initialState: AuthState = {
+export const initialState: AuthState = {
   user: null,
   fetchingUser: false,
 };

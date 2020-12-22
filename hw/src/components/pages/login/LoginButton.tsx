@@ -11,9 +11,9 @@ interface LoginButtonProps {
 export default function LoginButton({ onPress, title }: LoginButtonProps) {
   const uppercasedTitle = title.toUpperCase();
   return (
-    <TouchableHighlight onPress={onPress}>
+    <TouchableHighlight onPress={onPress} testID="LoginButton.TouchableHighlight">
       <View style={styles.button}>
-        <Text style={styles.text}>{uppercasedTitle}</Text>
+        <Text style={styles.text} testID="LoginButton.Text">{uppercasedTitle}</Text>
       </View>
     </TouchableHighlight>
   );

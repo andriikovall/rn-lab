@@ -1,0 +1,414 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders all cities as expected 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 60,
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "id": "1",
+          "name": "someName",
+          "temperature": 213,
+          "weatherState": 4,
+        },
+        Object {
+          "id": "2",
+          "name": "someName2",
+          "temperature": 213,
+          "weatherState": 7,
+        },
+        Object {
+          "id": "3",
+          "name": "someName3",
+          "temperature": 213,
+          "weatherState": 3,
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID="CitiesList.City.1"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "borderBottomColor": "#45464f",
+                  "borderBottomWidth": 2,
+                },
+                Object {
+                  "flexDirection": "row",
+                  "paddingVertical": 15,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 3,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                size={60}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    Object {
+                      "fontSize": 60,
+                    },
+                    undefined,
+                  ]
+                }
+                testID="City.Temperature"
+              >
+                -60°C
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 4,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              >
+                someName
+              </Text>
+              <Text
+                size={20}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    Object {
+                      "fontSize": 20,
+                    },
+                    Object {
+                      "color": "#45464f",
+                    },
+                  ]
+                }
+                testID="City.WeatherState"
+              >
+                // FOG
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID="CitiesList.City.2"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "borderBottomColor": "#45464f",
+                  "borderBottomWidth": 2,
+                },
+                Object {
+                  "flexDirection": "row",
+                  "paddingVertical": 15,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 3,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                size={60}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    Object {
+                      "fontSize": 60,
+                    },
+                    undefined,
+                  ]
+                }
+                testID="City.Temperature"
+              >
+                -60°C
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 4,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              >
+                someName2
+              </Text>
+              <Text
+                size={20}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    Object {
+                      "fontSize": 20,
+                    },
+                    Object {
+                      "color": "#45464f",
+                    },
+                  ]
+                }
+                testID="City.WeatherState"
+              >
+                // MOSTLY SUNNY
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID="CitiesList.City.3"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "borderBottomColor": "#45464f",
+                  "borderBottomWidth": 2,
+                },
+                Object {
+                  "flexDirection": "row",
+                  "paddingVertical": 15,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 3,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                size={60}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    Object {
+                      "fontSize": 60,
+                    },
+                    undefined,
+                  ]
+                }
+                testID="City.Temperature"
+              >
+                -60°C
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 4,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              >
+                someName3
+              </Text>
+              <Text
+                size={20}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fffffe",
+                      "fontFamily": "PTS55F",
+                    },
+                    Object {
+                      "fontSize": 22,
+                    },
+                    Object {
+                      "fontSize": 20,
+                    },
+                    Object {
+                      "color": "#45464f",
+                    },
+                  ]
+                }
+                testID="City.WeatherState"
+              >
+                // AH.. SHIT
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

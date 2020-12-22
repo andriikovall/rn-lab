@@ -3,7 +3,7 @@ import { ERROR_OCURRED, LOADING_STARTED, LOADING_FINISHED } from './../actionTyp
 import { SharedActionTypes } from './../../models/store/actions/sharedActions';
 import SharedState from '../../models/store/states/sharedState';
 
-const initialState: SharedState = {
+export const initialState: SharedState = {
   loading: false,
 };
 

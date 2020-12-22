@@ -3,7 +3,7 @@ import { WeatherSearchActionTypes } from './../../models/store/actions/weatherSe
 import WeatherSearchState from '../../models/store/states/weatherSearchState';
 import { DAY_SELECTED, CITY_SELECTED } from '../actionTypes/weatherSearch';
 
-const initialState: WeatherSearchState = {
+export const initialState: WeatherSearchState = {
   cityName: 'Kyiv',
   dayOffset: 0,
 };

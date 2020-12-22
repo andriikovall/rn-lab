@@ -8,7 +8,7 @@ import delayedPromise from '../../helpers/delayedPromise';
 
 // openweather API doesn't have methods to show cities by query
 // so I have to hardcode some values
-const hardcodedCities: ShortCity[] = [
+export const hardcodedCities: ShortCity[] = [
   { id: 'Kyiv', name: 'Kyiv', temperature: 280, weatherState: WeatherState.CLOUDY },
   { id: 'Kharkiv', name: 'Kharkiv', temperature: 281, weatherState: WeatherState.THUNDERSTORM },
   { id: 'Odessa', name: 'Odessa', temperature: 281, weatherState: WeatherState.FOG },
